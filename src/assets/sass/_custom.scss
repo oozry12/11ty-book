@@ -300,16 +300,16 @@
 /** artalk配色跟随主题变动  **/
 .artalk,
 .atk-layer-wrap {
-    --at-color-font: var(--body-font-color);
-    --at-color-border: var(--gray-200);
-    --at-color-bg: var(--gray-200);
-    --at-color-main: var(--body-font-color);
-    --at-color-grey: var(--gray-500);
-    --at-color-meta: var(--gray-700);
-    --at-color-bg-transl: var(--body-background);
-    --at-color-bg-grey: var(--at-color-bg);
-    --at-color-bg-grey-transl: var(--gray-500);
-    --at-color-gradient: linear-gradient(180deg,transparent,var(--body-background));
+    --at-color-font: var(--body-font-color) !important;
+    --at-color-border: var(--gray-200) !important;
+    --at-color-bg: var(--gray-200) !important;
+    --at-color-main: var(--body-font-color) !important;
+    --at-color-grey: var(--gray-500) !important;
+    --at-color-meta: var(--gray-700) !important;
+    --at-color-bg-transl: var(--body-background) !important;
+    --at-color-bg-grey: var(--at-color-bg) !important;
+    --at-color-bg-grey-transl: var(--gray-500) !important;
+    --at-color-gradient: linear-gradient(180deg,transparent,var(--body-background))  !important;
 
     .atk-icon:after{
         background-color: var(--gray-700);
