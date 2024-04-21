@@ -91,12 +91,12 @@ function changeTheme(theme, name) {
         const prefersDarkScheme = window.matchMedia(
             "(prefers-color-scheme: dark)"
         ).matches;
-        if (window.artalk) window.artalk.setDarkMode(prefersDarkScheme);
+        // if (window.artalk) window.artalk.setDarkMode(prefersDarkScheme);
     } else {
         // 切换主题并存储到localStorage
         document.documentElement.setAttribute("class", theme);
-        if (window.artalk)
-            window.artalk.setDarkMode(theme === "dark" ? true : false);
+        // if (window.artalk)
+        //     window.artalk.setDarkMode(theme === "dark" ? true : false);
     }
     localStorage.theme = theme;
     localStorage.name = name;
