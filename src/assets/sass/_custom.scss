@@ -309,6 +309,7 @@
     --at-color-bg-transl: var(--body-background);
     --at-color-bg-grey: var(--at-color-bg);
     --at-color-bg-grey-transl: var(--gray-500);
+    --at-color-gradient: linear-gradient(180deg,transparent,var(--body-background));
 
     .atk-icon:after{
         background-color: var(--gray-700);
