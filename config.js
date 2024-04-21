@@ -10,7 +10,7 @@ module.exports = {
         },
         cdnUrl: "https://cdn.1900.live",
     },
-    customPage: ["archives","memos","links"],
+    customPage: ["archives", "memos", "links"],
     ghost: {
         url: "https://cms.1900.live",
         key: "54bae25f075f027aba23d6f657",
@@ -19,7 +19,7 @@ module.exports = {
     memos: {
         url: "https://memos.1900.live/api/v1/memo?creatorId=101",
         limit: 10,
-        offset: 10
+        offset: 10,
     },
     //配置合集信息
     taxonomy: [
@@ -64,31 +64,30 @@ module.exports = {
             html: "Power by <a href='https://www.11ty.dev/' target='_blank'>11ty</a> & <a href='https://www.ghost.org/' target='_blank'>ghost</a>",
         },
     ],
-    themes:[
+    themes: [
         {
             name: "light",
-            desc: "月牙白"
+            desc: "月牙白",
         },
         {
             name: "dark",
-            desc: "极夜黑"
+            desc: "极夜黑",
         },
         {
             name: "yayu",
-            desc: "雅余黄"
+            desc: "雅余黄",
         },
         {
             name: "yuhang",
-            desc: "昱行粉"
+            desc: "昱行粉",
         },
         {
             name: "herblue",
-            desc: "她的蓝"
+            desc: "她的蓝",
         },
         {
             name: "auto",
-            desc: "自适应"
+            desc: "自适应",
         },
-
-    ]
+    ],
 };

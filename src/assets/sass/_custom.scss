@@ -308,6 +308,11 @@
     --at-color-meta: var(--gray-700);
     --at-color-bg-transl: var(--body-background);
     --at-color-bg-grey: var(--at-color-bg);
+    --at-color-bg-grey-transl: var(--gray-500);
+
+    .atk-icon:after{
+        background-color: var(--gray-700);
+    }
 
     .atk-main-editor > .atk-bottom {
         .atk-send-btn {
@@ -315,6 +320,13 @@
         }
         .atk-plug-btn:hover {
             background: var(--gray-500);
+        }
+        .atk-cancel{
+            background: transparent;
+        }
+
+        .atk-plug-btn i{
+            color: var(--gray-700);
         }
     }
 
