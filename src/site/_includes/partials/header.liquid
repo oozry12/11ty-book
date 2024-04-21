@@ -1,12 +1,12 @@
 <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="{{ '/assets/svg/menu.svg' | absoluteUrl | cacheBust }}" class="book-icon" alt="Menu" />
+    {% svg 'menu' %}
   </label>
 
   <strong> {{title}} </strong>
 
   <label for="toc-control">
-    <img src="{{ '/assets/svg/toc.svg' | absoluteUrl | cacheBust }}" class="book-icon" alt="Table of Contents" />
+    {% svg 'toc' %}
   </label>
 </div>
 

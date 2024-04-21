@@ -86,7 +86,8 @@ ul.pagination {
 }
 
 .book-icon {
-    filter: var(--icon-filter);
+    fill: var(--color-link);
+
 }
 
 .book-brand {
@@ -190,10 +191,15 @@ body[dir="rtl"] .book-menu {
         line-height: 0;
     }
 
-    img.book-icon {
+    svg.book-icon {
         height: 1.5em;
         width: 1.5em;
     }
+}
+
+.book-pagination svg.book-icon{
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .book-search {
@@ -248,7 +254,7 @@ body[dir="rtl"] .book-menu {
         @include fixed;
     }
 
-    img {
+    svg {
         height: 1em;
         width: 1em;
     }
@@ -262,7 +268,7 @@ body[dir="rtl"] .book-menu {
     padding: $padding-16 0;
     font-size: $font-size-14;
 
-    img {
+    svg {
         height: 1em;
         width: 1em;
         margin-inline-end: $padding-8;

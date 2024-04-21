@@ -24,7 +24,7 @@ const usMonth = require("./eleventy/filters/usMonth.js");
 // // const imageUrl = require("./eleventy/shortcodes/imageUrl.js");
 // const imageSrcset = require("./eleventy/shortcodes/imageSrcset.js");
 // const isSamePageOrSection = require("./eleventy/shortcodes/isSamePageOrSection.js");
-// const svg = require("./eleventy/shortcodes/svg.js");
+const svg = require("./eleventy/shortcodes/svg.js");
 // const currentYear = require("./eleventy/shortcodes/currentYear.js");
 
 const toc = require("./eleventy/shortcodes/toc.js");
@@ -79,7 +79,7 @@ module.exports = function (config) {
     //   // config.addShortcode("imageUrl", imageUrl);
     //   config.addShortcode("imageSrcset", imageSrcset);
     //   config.addShortcode("isSamePageOrSection", isSamePageOrSection);
-    //   config.addShortcode("svg", svg);
+    config.addShortcode("svg", svg);
     //   config.addShortcode("currentYear", currentYear);
     config.addFilter("tocGen", toc);
 

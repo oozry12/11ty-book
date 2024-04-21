@@ -5,7 +5,8 @@
     <input type="checkbox" id="theme" class="toggle">
     <label for="theme" class="flex justify-between">
       <a  role="button" class="flex align-center">
-        <img src="{{ '/assets/svg/theme.svg' | absoluteUrl | cacheBust }}" class="book-icon" alt="change theme">
+        {% svg 'theme' %}
+
         <span x-text="themeName"></span>
       </a>
     </label>

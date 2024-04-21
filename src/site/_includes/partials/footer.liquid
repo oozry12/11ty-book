@@ -3,7 +3,7 @@
 {% if post.updated_at %}
   <div>
     <a class="flex align-center" href="#" title="Last modified by" rel="noopener">
-      <img src="{{ '/assets/svg/calendar.svg' | absoluteUrl | cacheBust }}" class="book-icon" alt="Calendar" />
+      {% svg 'calendar' %}
       <span>{{ post.updated_at | htmlDate }}</span>
     </a>
   </div>

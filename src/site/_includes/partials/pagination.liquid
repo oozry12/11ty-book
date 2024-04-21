@@ -1,8 +1,8 @@
-<div class="flex flex-wrap justify-between">
+<div class="flex flex-wrap justify-between book-pagination">
   {% if tags.first != true %}
     {% if pagination.href.previous %}
     <a href="{{ pagination.previousPageHref | absoluteUrl }}" class="flex align-center float-left ">
-      <img src="{{ '/assets/svg/backward.svg' | absoluteUrl | cacheBust }}" alt="Previous" class="book-icon"  title="{{ partial "docs/title" . }}" />
+      {% svg 'backward' %}
       <span>{{ pagination.page.previous.title }}</span>
     </a>
     {% endif %}
@@ -12,7 +12,7 @@
     {% if pagination.href.next %}
     <a href="{{ pagination.nextPageHref | absoluteUrl }}" class="flex align-center float-right ">
       <span>{{ pagination.page.next.title }}</span>
-      <img src="{{ '/assets/svg/forward.svg' | absoluteUrl | cacheBust }}" alt="Next" class="book-icon" title="{{ partial "docs/title" . }}" />
+      {% svg 'forward' %}
     </a>
     {% endif %}
   {% endif %}
