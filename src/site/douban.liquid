@@ -10,18 +10,18 @@ permalink: /douban/index.html
 
 
 {% block content %}
-
+{% for doc in collections.docs-all %}
+{% if doc.slug == 'douban' %}
+{% assign page = doc %}
+{% break %}
+{% endif %}
+{% endfor %}
 <article class="markdown book-article">
   <h2 class="book-title">
-    我关注的博主们
+    {{ page.title }}
   </h2>
 
-  {% for doc in collections.docs-all %}
-  {% if doc.slug == 'douban' %}
-  {% assign page = doc %}
-  {% break %}
-  {% endif %}
-  {% endfor %}
+
 
 
   {% include "partials/post-meta",img:true,post:page %}
