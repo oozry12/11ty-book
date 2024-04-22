@@ -10,10 +10,27 @@
 
 
 {% block content %}
+
+
+
+
 <article class="markdown book-article">
   <h2 class="book-title">
     我关注的博主们
   </h2>
+
+  {% for doc in collections.docs-all %}
+    {% if doc.slug == 'links' %}
+      {% assign page = doc %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+
+  {% include  "partials/post-meta",img:true,post:page %}
+
+  {{ page.html }}
+
   <div class="book-columns flex flex-wrap">
   {% for item in collections.feeds %}
     <div class="flex-even markdown-inner">

@@ -120,6 +120,22 @@ module.exports = function (config) {
         return collection;
     });
 
+    // Get all pages, called 'docs' to prevent
+    // conflicting the eleventy page object
+    config.addCollection("docs-all", async function (collection) {
+        collection = await api.pages
+            .browse({
+                include: "tags,authors",
+                limit: "all",
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+
+        return collection;
+    });
+
+
     // Get all posts
     config.addCollection("posts", async function (collection) {
         collection = await api.posts
