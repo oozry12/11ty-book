@@ -18,6 +18,7 @@ const articleUrl = require("./eleventy/filters/articleUrl.js");
 const articleCategoryUrl = require("./eleventy/filters/articleCategoryUrl.js");
 // const highlight = require("./eleventy/filters/highlight.js");
 const groupbydate = require("./eleventy/filters/groupbydate.js");
+const doubanGroupbydate = require("./eleventy/filters/doubanGroupbydate.js");
 const usMonth = require("./eleventy/filters/usMonth.js");
 
 // // Import shortcodes
@@ -73,6 +74,7 @@ module.exports = function (config) {
     //     return Math.ceil(numberOfWords / wordsPerMinute);
     //   });
     config.addFilter("groupbydate", groupbydate);
+    config.addFilter("doubanGroupbydate", doubanGroupbydate);
     config.addFilter("usMonth", usMonth);
 
     //   // Shortcodes
@@ -328,6 +330,23 @@ module.exports = function (config) {
                         ) === index
                     );
                 });
+                return data;
+            } catch (error) {
+                console.log("请求错误:", error);
+            }
+        }
+        return collection;
+    });
+
+
+        // Get All Douban
+    config.addCollection("douban", async function (collection) {
+        if (fluxToken) {
+            try {
+                const response = await fetch(
+                    "https://fastraw.ixnic.net/rebron1900/doumark-action/master/data/neodb/movie.json"
+                );
+                let data = await response.json();
                 return data;
             } catch (error) {
                 console.log("请求错误:", error);

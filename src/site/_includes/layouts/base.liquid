@@ -8,6 +8,8 @@
 <body dir="ltr">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
   <input type="checkbox" class="hidden toggle" id="toc-control" />
+  {% assign has_tag = post.tags | where:'name','#post-toc' | first %}
+
   <main class="container flex">
     <aside class="book-menu">
       <div class="book-menu-content">
@@ -45,7 +47,8 @@
     </div>
 
     {% comment %} {{ if default true (default .Site.Params.BookToC .Params.BookToC) }} {% endcomment %}
-    <aside class="book-toc">
+    {% unless  page.url contains '/douban/' %}
+    <aside class="book-toc ">
       <div class="book-toc-content">
         {% block toc %}{% endblock %}
         <div class="book-toc-top">
@@ -54,6 +57,7 @@
         {% comment %} {{ template "toc" . }} <!-- Table of Contents --> {% endcomment %}
       </div>
     </aside>
+    {%  endunless %}
     {% comment %} {{ end }} {% endcomment %}
   </main>
 

@@ -10,6 +10,9 @@ import { initCopyButton } from "./code.js";
 // import "./highlightjs-badge.min.js";
 import { getMemos, parseMemos } from "./memos.js";
 
+
+
+
 window.Alpine = Alpine;
 Alpine.data("theme", () => ({
     themeName: localStorage.name,

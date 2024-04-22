@@ -21,25 +21,6 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "/.well-known/webfinger/*"
-  to = "https://gts.1900.live/.well-known/webfinger"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/.well-known/host-meta/*"
-  to = "https://gts.1900.live/.well-known/host-meta"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/.well-known/nodeinfo/*"
-  to = "https://gts.1900.live/.well-known/nodeinfo"
-  status = 301
-  force = true
-
-
 
 
 
