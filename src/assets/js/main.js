@@ -7,7 +7,6 @@ import Artalk from "./ArtalkLite";
 import quicklink from "quicklink/dist/quicklink.umd";
 import { initCopyButton } from "./code.js";
 
-// import "./highlightjs-badge.min.js";
 import { getMemos, parseMemos } from "./memos.js";
 
 

@@ -1,6 +1,5 @@
 import { marked } from "marked";
 import hljs from "highlight.js";
-import pangu from "pangu/dist/browser/pangu.js";
 
 export async function getMemos(url, limit, offset) {
     try {

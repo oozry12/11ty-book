@@ -283,7 +283,7 @@ body[dir="rtl"] .book-menu {
 .book-theme {
     margin-block-end: $padding-16 * 2;
 
-    li:first-child {
+    & > li:first-child {
         font-weight: bolder;
     }
 
