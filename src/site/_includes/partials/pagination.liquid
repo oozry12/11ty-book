@@ -1,7 +1,7 @@
 <div class="flex flex-wrap justify-between book-pagination">
   {% if tags.first != true %}
     {% if pagination.href.previous %}
-    <a href="{{ pagination.previousPageHref | absoluteUrl }}" class="flex align-center float-left ">
+    <a href="{{ pagination.previousPageHref | absoluteUrl }}" aria-label="Read previous page" class="flex align-center float-left ">
       {% svg 'backward' %}
       <span>{{ pagination.page.previous.title }}</span>
     </a>
@@ -10,7 +10,7 @@
     
   {% if tags.last  != true  %}
     {% if pagination.href.next %}
-    <a href="{{ pagination.nextPageHref | absoluteUrl }}" class="flex align-center float-right ">
+    <a href="{{ pagination.nextPageHref | absoluteUrl }}" aria-label="Read next page" class="flex align-center float-right ">
       <span>{{ pagination.page.next.title }}</span>
       {% svg 'forward' %}
     </a>

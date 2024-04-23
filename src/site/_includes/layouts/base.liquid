@@ -6,8 +6,8 @@
   {% comment %} {{ partial "docs/inject/head" . }} {% endcomment %}
 </head>
 <body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <input aria-label="menu-control" type="checkbox" class="hidden toggle" id="menu-control" />
+  <input aria-label="toc-control" type="checkbox" class="hidden toggle" id="toc-control" />
   {% assign has_tag = post.tags | where:'name','#post-toc' | first %}
 
   <main class="container flex">

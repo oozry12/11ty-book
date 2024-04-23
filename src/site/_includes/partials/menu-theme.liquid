@@ -1,5 +1,5 @@
 <ul class="book-theme"   x-data="theme">
-  <div>配色</div>
+  <li>配色</li>
   <li >
 
     <input type="checkbox" id="theme" class="toggle">
@@ -14,7 +14,7 @@
     <ul>
       {% for theme in themes %}
         <li>
-          <a @click="changeTheme('{{ theme.name }}','{{ theme.desc }}');setName();">
+          <a href="#" @click="changeTheme('{{ theme.name }}','{{ theme.desc }}');setName();">
             {{ theme.desc }}
           </a>
         </li> 

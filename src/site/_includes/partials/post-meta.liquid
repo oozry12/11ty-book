@@ -3,7 +3,7 @@
 {{ end }} {% endcomment %}
 
 
-<h5>{{ post.published_at | htmlDate }}</h5>
+<div>{{ post.published_at | htmlDate }}</div>
 
 {% comment %} 
 {{ range $taxonomy, $_ := .Site.Taxonomies }}
@@ -41,6 +41,6 @@
 
 {% if img and post.feature_image %}
 <p>
-    <img src={{ post.feature_image }} />
+    <img src={{ post.feature_image }} alt="{{ post.feature_image_alt }}" />
 </p>
 {% endif %}
