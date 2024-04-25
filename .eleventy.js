@@ -344,7 +344,7 @@ module.exports = function (config) {
         if (fluxToken) {
             try {
                 const response = await fetch(
-                    "https://fastraw.ixnic.net/rebron1900/doumark-action/master/data/neodb/movie.json"
+                    "https://neodb.190102.xyz"
                 );
                 let data = await response.json();
                 return data;

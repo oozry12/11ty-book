@@ -9,9 +9,6 @@ import { initCopyButton } from "./code.js";
 
 import { getMemos, parseMemos } from "./memos.js";
 
-
-
-
 window.Alpine = Alpine;
 Alpine.data("theme", () => ({
     themeName: localStorage.name,
@@ -34,6 +31,50 @@ Alpine.data("memos", () => ({
         this.getMemoss();
     },
     initZoom: initZoom,
+}));
+
+Alpine.data("douban", () => ({
+    changeCG: function (type) {
+        // 选择所有具有data-itemtype属性的元素
+        const elements = document.querySelectorAll("[data-itemtype]");
+
+        // 遍历这些元素
+        elements.forEach(function (el) {
+            // 检查data-itemtype的值是否不等于'book'
+            const t = el.getAttribute("data-itemtype");
+            if (type == "all") {
+                el.style.display = "";
+                return;
+            }
+            if (t !== type) {
+                // 如果不等于，隐藏该元素
+                el.style.display = "none";
+            } else {
+                el.style.display = "";
+            }
+        });
+        this.hiddenEmpty();
+    },
+    hiddenEmpty: function () {
+        const cardElements = document.querySelectorAll(".db--listBydate");
+
+        cardElements.forEach(function (card) {
+            // 检查db--dateList__card类下的子元素是否全部被隐藏
+            let allHidden = true;
+            card.querySelectorAll(".db--item").forEach(function (dateListCard) {
+                // 如果存在任何未隐藏的子元素，则将allHidden设置为false
+                if (dateListCard.style.display !== "none") {
+                    allHidden = false;
+                    card.style.display = ''
+                }
+            });
+
+            // 如果所有子元素都被隐藏，则隐藏db--list__card元素
+            if (allHidden) {
+                card.style.display = "none";
+            }
+        });
+    },
 }));
 
 Alpine.start();
@@ -128,3 +169,33 @@ function changeTheme(theme, name) {
 //     console.warn("ERROR(" + err.code + "): " + err.message);
 // }
 // navigator.geolocation.getCurrentPosition(success, error, options);
+
+// 选择所有具有data-itemtype属性的元素
+// const elements = document.querySelectorAll('[data-itemtype]');
+
+// // 遍历这些元素
+// elements.forEach(function(el) {
+//   // 检查data-itemtype的值是否不等于'book'
+//   if (el.getAttribute('data-itemtype') !== 'book') {
+//     // 如果不等于，隐藏该元素
+//     el.style.display = 'none';
+//   }
+
+// // 隐藏所有非当前类型的元素
+const cardElements = document.querySelectorAll(".db--listBydate");
+
+cardElements.forEach(function (card) {
+    // 检查db--dateList__card类下的子元素是否全部被隐藏
+    let allHidden = true;
+    card.querySelectorAll(".db--item").forEach(function (dateListCard) {
+        // 如果存在任何未隐藏的子元素，则将allHidden设置为false
+        if (dateListCard.style.display !== "none") {
+            allHidden = false;
+        }
+    });
+
+    // 如果所有子元素都被隐藏，则隐藏db--list__card元素
+    if (allHidden) {
+        card.style.display = "none";
+    }
+});
