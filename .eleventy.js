@@ -21,6 +21,8 @@ const groupbydate = require("./eleventy/filters/groupbydate.js");
 const doubanGroupbydate = require("./eleventy/filters/doubanGroupbydate.js");
 const usMonth = require("./eleventy/filters/usMonth.js");
 
+const albums = require("./eleventy/filters/albums.js")
+
 // // Import shortcodes
 // // const imageUrl = require("./eleventy/shortcodes/imageUrl.js");
 // const imageSrcset = require("./eleventy/shortcodes/imageSrcset.js");
@@ -76,6 +78,7 @@ module.exports = function (config) {
     config.addFilter("groupbydate", groupbydate);
     config.addFilter("doubanGroupbydate", doubanGroupbydate);
     config.addFilter("usMonth", usMonth);
+    config.addFilter("albums",albums);
 
     //   // Shortcodes
     //   // config.addShortcode("imageUrl", imageUrl);
@@ -153,6 +156,24 @@ module.exports = function (config) {
 
         return collection;
     });
+
+
+    // Get all albums
+    config.addCollection("albums", async function (collection) {
+        collection = await api.posts
+            .browse({
+                include: "tags,authors",
+                limit: loadData,
+                order: "published_at desc",
+                filter: "visibility:public+tag:hash-album",
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+
+        return collection;
+    });
+
 
     // Get all authors
     config.addCollection("authors", async function (collection) {

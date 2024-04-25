@@ -1,0 +1,56 @@
+---
+permalink: /albums/index.html
+---
+{% layout "layouts/base" %}
+
+
+{% block head %}{% include 'partials/head',title:post.title %}{% endblock %}
+
+{% block header %}{% include 'partials/header',title:post.title %}{% endblock %}
+
+
+{% block content %}
+{% for doc in collections.docs-all %}
+{% if doc.slug == 'albums' %}
+{% assign page = doc %}
+{% break %}
+{% endif %}
+{% endfor %}
+<article class="markdown book-article">
+  <h2 class="book-title">
+    {{ page.title }}
+  </h2>
+
+
+
+
+  {% include "partials/post-meta",img:true,post:page %}
+
+  {{ page.html }}
+  
+  {% assign albums =  collections.albums | albums %}
+
+  {% endblock %}
+
+
+  {% block footer %}
+  {% include 'partials/footer',post:post %}
+  {% endblock %}
+
+  {% comment %} {% block comments %}
+  {% include 'partials/comment' %}
+  {% endblock %} {% endcomment %}
+
+
+
+  {% block toc %}
+  {% comment %} {% include 'partials/toc-tagloop' %} {% endcomment %}
+  {% endblock %}
+
+  {% block h-toc %}
+  {% comment %}
+  <aside class="hidden clearfix">
+    {% include 'partials/toc-tagloop' %}
+  </aside>
+  {% endcomment %}
+  {% endblock %}
