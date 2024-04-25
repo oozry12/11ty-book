@@ -34,7 +34,7 @@ Alpine.data("memos", () => ({
 }));
 
 Alpine.data("douban", () => ({
-    changeCG: function (type) {
+    change: function (type) {
         // 选择所有具有data-itemtype属性的元素
         const elements = document.querySelectorAll("[data-itemtype]");
 
@@ -53,9 +53,9 @@ Alpine.data("douban", () => ({
                 el.style.display = "";
             }
         });
-        this.hiddenEmpty();
+        this.hidden();
     },
-    hiddenEmpty: function () {
+    hidden: function () {
         const cardElements = document.querySelectorAll(".db--listBydate");
 
         cardElements.forEach(function (card) {
@@ -75,6 +75,12 @@ Alpine.data("douban", () => ({
             }
         });
     },
+    active: function(el){
+        document.querySelectorAll('.db--navItem').forEach(function(item){
+            item.classList.remove('current')
+        });
+        el.currentTarget.classList.add('current')
+    }
 }));
 
 Alpine.start();
