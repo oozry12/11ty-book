@@ -8,7 +8,8 @@
 {% block content %}
 
 <div class="markdown book-article">
-    <h1>归档</h1>
+    <h1 class="book-title">
+        归档</h1>
 
     {% for doc in collections.docs-all %}
         {% if doc.slug == 'archives' %}
@@ -18,7 +19,7 @@
       {% endfor %}
 
 
-    {% include  "partials/post-meta",img:true,post:page %}
+    {% include  "partials/post-meta",img:false,post:page %}
 
     <div>
         {% assign groupdata = collections.posts | groupbydate %}

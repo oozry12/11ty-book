@@ -17,6 +17,9 @@ permalink: /{{ page.slug }}/
     <h1 class="book-title">
      {{ page.title }}
     </h1>
+    
+    {% include  "partials/post-meta",img:false,post:page %}
+
     {{ page.html }}
   </article>
 {% endblock %}
