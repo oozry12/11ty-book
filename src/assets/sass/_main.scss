@@ -86,8 +86,11 @@ ul.pagination {
 }
 
 .book-icon {
-    fill: var(--color-link);
-
+    fill: var(--body-font-color);
+    stroke: var(--body-background);
+    height: 1em;
+    width: 1em;
+    margin-inline-end: 0.5em;
 }
 
 .book-brand {
@@ -287,16 +290,12 @@ body[dir="rtl"] .book-menu {
         font-weight: bolder;
     }
 
-    .book-icon {
-        height: 1em;
-        width: 1em;
-        margin-inline-end: 0.5em;
-    }
 
     ul {
         padding-inline-start: 1.5em;
     }
 }
+
 
 // Responsive styles
 .book-menu-content,

@@ -17,9 +17,9 @@ permalink: /albums/index.html
 {% endif %}
 {% endfor %}
 <article class="markdown book-article">
-  <h2 class="book-title">
+  <h1 class="book-title">
     {{ page.title }}
-  </h2>
+  </h1>
 
 
 
@@ -28,8 +28,16 @@ permalink: /albums/index.html
 
   {{ page.html }}
   
-  {% assign albums =  collections.albums | albums %}
 
+
+  {% assign test =  collections.albums | testaaa %}
+<div style="display: flex;">
+  {% for item in test.data %}
+  <div style="width: 200px;height: 50px;object-fit: fill;overflow: hidden;">
+    {% comment %} <img src="{{ item.src }}" /> {% endcomment %}
+  </div>
+  {% endfor %}
+  </div>
   {% endblock %}
 
 

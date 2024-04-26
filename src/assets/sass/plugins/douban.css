@@ -105,6 +105,11 @@
     margin-bottom: 20px;
     position: relative
 }
+.db--icon-comment{
+    margin-top: 3px;
+    right: 0px;
+    position: absolute !important;
+}
 
 .db--item__music img {
     width: 150px;
@@ -405,3 +410,4 @@
     align-items: flex-start;
     margin-top: 15px
 }
+

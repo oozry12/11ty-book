@@ -8,7 +8,8 @@ const pangu = require("pangu/src/browser/pangu");
 const hljs = require("highlight.js");
 
 module.exports = (posts) => {
-    let imgs = [];
+    let imgs = { data: [] };
+
     posts.forEach(function(post){
         const dom = new JSDOM(post.html);
         const { document, Node, DocumentFragment, XPathResult } = dom.window;
@@ -19,11 +20,18 @@ module.exports = (posts) => {
 
         // // Add lazyload to all article images
         const articleImages = [...document.querySelectorAll("img")];
-        imgs.push(articleImages);
+        articleImages.forEach(img => {
+            // 使用src作为键，创建一个对象，其中包含src和alt作为属性
+
+            imgs.data.push ({
+                src: img.src,
+                alt: img.alt
+            });
+        });
     })
     
 
-    return posts;
+    return imgs;
 
     // if (outputPath.endsWith(".html")) {
     //     const dom = new JSDOM(content);

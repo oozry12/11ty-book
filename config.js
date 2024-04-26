@@ -10,7 +10,7 @@ module.exports = {
         },
         cdnUrl: "https://cdn.1900.live",
     },
-    customPage: ["archives", "memos", "links","douban"],
+    customPage: ["archives", "memos", "links","douban","albums"],
     ghost: {
         url: "https://cms.1900.live",
         key: "54bae25f075f027aba23d6f657",

@@ -78,7 +78,7 @@ module.exports = function (config) {
     config.addFilter("groupbydate", groupbydate);
     config.addFilter("doubanGroupbydate", doubanGroupbydate);
     config.addFilter("usMonth", usMonth);
-    config.addFilter("albums",albums);
+    config.addFilter("testaaa",albums);
 
     //   // Shortcodes
     //   // config.addShortcode("imageUrl", imageUrl);
