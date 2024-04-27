@@ -7,9 +7,10 @@ permalink: /assets/search-data.json
       "id": {{ forloop.index }},
       "href": "{{ post.slug | articleUrl }}",
       "date": "{{post.published_at}}",
-      "title": {{ post.title | json}},
+      "title": {{ post.title | json }},
       "section": "{{ post.tags | map: "name"  | join: "," }}",
-      "published": "{{post.published_at}}",
+      "published": "{{ post.published_at }}",
+      "word_count": {{ post.html | strip_html | strip_newlines | escape | json | size}},
       "content": {{ post.html | strip_html | strip_newlines | escape | json }}
   }{% if forloop.last != true %},{% endif %}{% endfor %}
 ]

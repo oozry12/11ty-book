@@ -365,7 +365,7 @@ module.exports = function (config) {
         if (fluxToken) {
             try {
                 const response = await fetch(
-                    "https://neodb.190102.xyz"
+                    "https://neodb.190102.xyz?cg=book"
                 );
                 let data = await response.json();
                 return data;

@@ -1122,3 +1122,43 @@ pre:hover >.copy-button {
     --vp-c-brand-next: #009ff7;
     animation: rainbow 40s linear infinite;
 }
+
+.toc-relitu{
+    margin-bottom: 10px;
+    #cal-heatmap{
+        height: 160px;
+        margin: 1em 0;
+        position: relative;
+
+        svg {
+            height: auto;
+            width: auto;
+            
+        }
+
+        .ch-plugin-calendar-label{
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            gutter: 5px;
+        }
+
+        .ch-plugin-calendar-label-text{
+            fill: var(--gray-500) !important;
+            font-size: 12px !important;
+            transform: translate(6px, 0px);
+        }
+
+        .ch-domain-text{
+            display: none;
+        }
+        
+        [data-theme=dark] .ch-subdomain-bg {
+            fill: var(--gray-200);
+        }
+    }
+
+    .relitu-count{
+        color: var(--gray-500);
+    }
+}

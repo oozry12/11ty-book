@@ -13,7 +13,13 @@ pagination:
 {% block pagination %}{% include 'partials/pagination' %}{% endblock %}
 
 
-{% block toc %}{% include 'partials/toc-tagloop' %}{% endblock %}
+{% block toc %}
+
+{% include 'partials/relitu' %}
+
+{% include 'partials/toc-tagloop' %}
+
+{% endblock %}
 
 {% block h-toc %}
 <aside class="hidden clearfix">

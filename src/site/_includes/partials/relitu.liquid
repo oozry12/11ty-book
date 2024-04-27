@@ -1,0 +1,136 @@
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/cal-heatmap/dist/plugins/Tooltip.min.js"></script>
+<script src="https://unpkg.com/cal-heatmap/dist/plugins/CalendarLabel.min.js"></script>
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var data2 = { pages: [] };
+
+    fetch("/assets/search-data.json")
+      .then((respone) => respone.json())
+      .then((posts) => {
+        posts.forEach(function (item) {
+          var date = item.date.substring(0, 10);
+          var year = new Date(item.date).getFullYear();
+          var month = new Date(item.date).getMonth() + 1;
+          var day = new Date(item.date).getDate();
+          item.year = year;
+          item.date = date;
+          item.month = month;
+          item.day = day;
+          item.word_count;
+          data2.pages.push(item)
+        });
+
+        const cal = new CalHeatmap();
+        const today = new Date();  // 获取今天的日期
+
+        let blogInfo = data2;
+        let rangeNum = 5;
+        let startDate = new Date(today.setMonth(today.getMonth() - 1));
+
+        // 适配 Dark theme
+        const localStorageTheme = localStorage.getItem('appearance');
+        const htmlElement = document.documentElement;
+        const isDarkMode = htmlElement.classList.contains('dark');
+        let currentTheme;
+
+        cal.on('click', (event, timestamp, value) => {
+          console.log(
+            'On <b>' +
+              new Date(timestamp).toLocaleDateString() +
+              '</b>, the max temperature was ' +
+              value +
+              '°C'
+          );
+        });
+
+
+        var max_wordcount = data2.pages.reduce((max, page) => { return page.word_count > max ? page.word_count : max; }, 0);
+
+        // 绘制热力图
+        cal.paint({
+          theme: 'dark',
+          range: 2,
+          scale: {
+            color: {
+              type: 'threshold',
+              range: ['#14432a', '#166b34', '#37a446', '#4dd05a'],
+              domain: [100, 1e3, 5e3, 1e4],
+            },
+          },
+          domain: {
+            type: 'month',
+            gutter: 5,
+            position: 'right',
+            text: null
+          },
+          subDomain: {
+            type: 'ghDay',
+            radius: 5,
+            width: 18,
+            height: 18,
+            gutter: 5,
+          },
+          date: {
+            start: startDate,
+            locale: { weekStart: 1 },
+          },
+          data: {
+            source: blogInfo.pages, x: "date", y: item => {
+              return parseInt(item.word_count);
+            }, groupY: 'sum'
+          },
+        }, [
+          [
+            Tooltip,
+            {
+              text: function (date, value, dayjsDate) {
+                const postCount = blogInfo.pages.filter(page => page.date === dayjsDate.format('YYYY-MM-DD')).length;
+                const postText = postCount === 0 ? '' : (postCount === 1 ? '共 1 篇' : `共 ${postCount} 篇`);
+                const wordText = value ? ' 字 ' : '';
+                const valueText = value ? value : '';
+
+                return (
+                  postText +
+                  ' ' +
+                  valueText +
+                  wordText +
+                  '<span class="block">' +
+                  dayjsDate.format('YYYY-MM-DD') +
+                  '</span>'
+                );
+              },
+            },
+          ],
+          [
+            CalendarLabel,
+            {
+              position: 'right',
+              text: () => ["一", "", "三", "", "五", "", "日"],
+              textAlign:'middle',
+              radius: 5
+            },
+          ],
+
+        ]);
+
+      });
+
+
+      
+
+  });
+</script>
+
+<div class="toc-relitu">
+  <strong>热力图</strong>
+  <div id="cal-heatmap"></div>
+  <div class="relitu-count">写写停停，博主已记录 <strong>{{ collections.posts |  size}}</strong> 篇文章! </div>
+</div>
