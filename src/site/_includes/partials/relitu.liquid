@@ -61,7 +61,7 @@
           scale: {
             color: {
               type: 'threshold',
-              range: ['#14432a', '#166b34', '#37a446', '#4dd05a'],
+              range: ['rgba(77, 208, 90,0.1)', 'rgba(77, 208, 90,0.3)', 'rgba(77, 208, 90,0.6)', 'rgba(77, 208, 90,1)'],
               domain: [100, 1e3, 5e3, 1e4],
             },
           },
@@ -92,7 +92,8 @@
             Tooltip,
             {
               text: function (date, value, dayjsDate) {
-                const postCount = blogInfo.pages.filter(page => page.date === dayjsDate.format('YYYY-MM-DD')).length;
+                const currentPost = blogInfo.pages.filter(page => page.date === dayjsDate.format('YYYY-MM-DD'));
+                const postCount = currentPost.length;
                 const postText = postCount === 0 ? '' : (postCount === 1 ? '共 1 篇' : `共 ${postCount} 篇`);
                 const wordText = value ? ' 字 ' : '';
                 const valueText = value ? value : '';
