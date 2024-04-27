@@ -5,14 +5,14 @@
 {% comment %} {{ if . }}
   {{ template "book-menu-hugo" . }}
 {{ end }} {% endcomment %}
-<ul>
+<ul class="book-menu-nav">
   {% if site.navigation %}
     <li  class="book-section-flat">
   <span>路线牌</span>
   <ul>
   {% for item in site.navigation %}
   <li>
-    <a href="{{ item.url | absoluteUrl }}" >
+    <a {% if item.url == page.url %}class="current"{% endif %} href="{{ item.url | absoluteUrl }}" >
       {{ item.label }}
     </a>
   </li>

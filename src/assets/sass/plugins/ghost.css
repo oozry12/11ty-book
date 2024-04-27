@@ -553,6 +553,7 @@
 .kg-callout-card div.kg-callout-emoji {
     padding-right: 0.8em;
     line-height: 1.25em;
+    font-style: normal;
 }
 
 .kg-callout-card div.kg-callout-text {

@@ -116,6 +116,13 @@ ul.pagination {
         @include fixed;
     }
 
+    .book-menu-nav a.current{
+        color: var(--color-link);
+        font-weight: 600;
+        border-left: solid 2px var(--color-link);
+        padding-left: 5px;
+    }
+
     a,
     label {
         color: inherit;
