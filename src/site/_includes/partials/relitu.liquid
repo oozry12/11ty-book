@@ -41,14 +41,10 @@
         const isDarkMode = htmlElement.classList.contains('dark');
         let currentTheme;
 
+
         cal.on('click', (event, timestamp, value) => {
-          console.log(
-            'On <b>' +
-              new Date(timestamp).toLocaleDateString() +
-              '</b>, the max temperature was ' +
-              value +
-              '°C'
-          );
+          var date = new Date(timestamp).toISOString().substring(0,7);
+          window.location.href = '/archives#' + date;
         });
 
 

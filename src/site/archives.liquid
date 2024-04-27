@@ -25,7 +25,7 @@
         {% for post in groupdata %}
                 <h2>{{post.year}}</h2>
                 {% for month in post.data %}
-                    <h3>{{ month.month | usMonth }} / {{ month.month }}</h3>
+                    <h3 id="{{ post.year }}-{{ month.month }}">{{ month.month | usMonth }} / {{ month.month }}</h3>
                     {% if month.data %}
                         <ul>
                             {% for monthdata in month.data %}
@@ -52,7 +52,13 @@
 
 
 
-{% block toc %}{% include 'partials/toc-tagloop' %}{% endblock %}
+{% block toc %}
+
+{% include 'partials/relitu' %}
+
+{% include 'partials/toc-tagloop' %}
+
+{% endblock %}
 
 {% block h-toc %}
 <aside class="hidden clearfix">
