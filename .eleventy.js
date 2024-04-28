@@ -157,7 +157,9 @@ module.exports = function (config) {
             });
         const titleText = collection
             .map(function (item) {
-                return item.title;
+                let tags = item.tags.map(tag => tag.name).join(',');
+                let desc = item.excerpt != null ? item.excerpt.substring(0,100) : '';
+                return item.title + desc +tags;
             })
             .join(",");
 
