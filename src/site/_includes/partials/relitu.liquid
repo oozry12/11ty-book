@@ -43,6 +43,7 @@
 
 
         cal.on('click', (event, timestamp, value) => {
+          if (value == null) { return; }
           var date = new Date(timestamp).toISOString().substring(0,7);
           window.location.href = '/archives#' + date;
         });
