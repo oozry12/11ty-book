@@ -57,8 +57,9 @@ const fluxToken = process.env.FLUX_TOKEN;
 
 module.exports = function (config) {
     config.addTransform("parseContent", parseContent);
-    config.addTransform("minifyHtml", minifyHtml);
-
+    if(process.env.NODE_ENV.trim() != 'dev'){
+        config.addTransform("minifyHtml", minifyHtml);
+    }
     // Filters
     config.addFilter("excerpt", excerpt);
     config.addFilter("absoluteUrl", absoluteUrl);

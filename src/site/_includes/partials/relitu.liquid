@@ -43,9 +43,9 @@
 
 
         cal.on('click', (event, timestamp, value) => {
-          if (value == null) { return; }
-          var date = new Date(timestamp).toISOString().substring(0,7);
-          window.location.href = '/archives#' + date;
+          // if (value == null) { return; }
+          // var date = new Date(timestamp).toISOString().substring(0,7);
+          // window.location.href = '/archives#' + date;
         });
 
 
@@ -95,6 +95,13 @@
                 const wordText = value ? ' 字 ' : '';
                 const valueText = value ? value : '';
 
+
+                var list = ``;
+
+                currentPost.forEach(function(item){
+                  list += '<br /><a href="'+item.url+'">'+ item.title+'</a>'
+                })
+
                 return (
                   postText +
                   ' ' +
@@ -102,7 +109,8 @@
                   wordText +
                   '<span class="block">' +
                   dayjsDate.format('YYYY-MM-DD') +
-                  '</span>'
+                  '</span>' +
+                  list
                 );
               },
             },
