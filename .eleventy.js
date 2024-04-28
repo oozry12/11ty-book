@@ -21,7 +21,9 @@ const groupbydate = require("./eleventy/filters/groupbydate.js");
 const doubanGroupbydate = require("./eleventy/filters/doubanGroupbydate.js");
 const usMonth = require("./eleventy/filters/usMonth.js");
 
-const albums = require("./eleventy/filters/albums.js")
+const albums = require("./eleventy/filters/albums.js");
+
+const fontmin = require("./eleventy/utilities/minfont.js");
 
 // // Import shortcodes
 // // const imageUrl = require("./eleventy/shortcodes/imageUrl.js");
@@ -42,7 +44,7 @@ const {
     customPage,
     taxonomy,
     footer,
-    themes
+    themes,
 } = require("./config.js");
 
 // Init Ghost API
@@ -57,7 +59,7 @@ const fluxToken = process.env.FLUX_TOKEN;
 
 module.exports = function (config) {
     config.addTransform("parseContent", parseContent);
-    if(process.env.NODE_ENV.trim() != 'dev'){
+    if (process.env.NODE_ENV.trim() != "dev") {
         config.addTransform("minifyHtml", minifyHtml);
     }
     // Filters
@@ -79,7 +81,7 @@ module.exports = function (config) {
     config.addFilter("groupbydate", groupbydate);
     config.addFilter("doubanGroupbydate", doubanGroupbydate);
     config.addFilter("usMonth", usMonth);
-    config.addFilter("testaaa",albums);
+    config.addFilter("testaaa", albums);
 
     //   // Shortcodes
     //   // config.addShortcode("imageUrl", imageUrl);
@@ -105,7 +107,7 @@ module.exports = function (config) {
     config.addGlobalData("footer", footer);
     config.addGlobalData("memos", memos);
     config.addGlobalData("themes", themes);
-    config.addGlobalData("site_url",mode[process.env.NODE_ENV.trim()]);
+    config.addGlobalData("site_url", mode[process.env.NODE_ENV.trim()]);
 
     // Get all pages, called 'docs' to prevent
     // conflicting the eleventy page object
@@ -141,7 +143,6 @@ module.exports = function (config) {
         return collection;
     });
 
-
     // Get all posts
     config.addCollection("posts", async function (collection) {
         collection = await api.posts
@@ -154,10 +155,16 @@ module.exports = function (config) {
             .catch((err) => {
                 console.error(err);
             });
+        const titleText = collection
+            .map(function (item) {
+                return item.title;
+            })
+            .join(",");
+
+        fontmin(titleText);
 
         return collection;
     });
-
 
     // Get all albums
     config.addCollection("albums", async function (collection) {
@@ -174,7 +181,6 @@ module.exports = function (config) {
 
         return collection;
     });
-
 
     // Get all authors
     config.addCollection("authors", async function (collection) {
@@ -360,14 +366,11 @@ module.exports = function (config) {
         return collection;
     });
 
-
-        // Get All Douban
+    // Get All Douban
     config.addCollection("douban", async function (collection) {
         if (fluxToken) {
             try {
-                const response = await fetch(
-                    "https://neodb.190102.xyz"
-                );
+                const response = await fetch("https://neodb.190102.xyz");
                 let data = await response.json();
                 return data;
             } catch (error) {
