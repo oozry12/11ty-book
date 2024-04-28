@@ -2,7 +2,7 @@ const Fontmin = require("fontmin");
 
 module.exports = (titleText) => {
     const fontmin = new Fontmin()
-        .src("assets/Maple-UI.ttf")
+        .src("assets/SmileySans.ttf")
         .use(
             Fontmin.glyph({
                 text: titleText,
