@@ -5,6 +5,13 @@
   {% assign og_title = site.title |  append: " | " |  append: site.description %}
 {% endif %}
 
+{% assign og_Text = "" %}
+{% if post.title %}
+  {% assign og_Text = post.title  |  append:" - " |  append: site.title |  append: " | " |  append: site.description | url_encode %}
+{% else %}
+  {% assign og_Text = site.title |  append: " | " |  append: site.description | url_encode  %}
+{% endif %}
+
 
 {% assign og_img = "" %}
 {% if post.feature_image %}
@@ -12,6 +19,8 @@
 {% else %}
   {% assign og_img = site.cover_image %}
 {% endif %}
+
+
 
 {% assign og_desc = "" %}
 {% if post.excerpt %}
@@ -41,7 +50,7 @@
   For more information, read: https://www.opengraph.xyz/blog/how-to-implement-dynamic-open-graph-images
 -->
 
-<meta property="og:image" content="{{og_img}}">
+<meta property="og:image" content="https://vercel-og-eosin.vercel.app/api/og?title={{ og_Text }}">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
