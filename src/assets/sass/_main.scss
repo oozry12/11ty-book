@@ -100,6 +100,15 @@ ul.pagination {
         width: 1.5em;
         margin-inline-end: $padding-8;
     }
+    .site-description{
+        width: 180px;
+        font-size: 12px;
+        color: var(--gray-700);
+    }
+    .site-title {
+        font-style: italic;
+        font-weight: bolder;
+    }
 }
 
 .book-menu {

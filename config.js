@@ -3,10 +3,12 @@ module.exports = {
         dev: {
             url: "http://localhost:8080",
             limit: "20",
+            neodb: "https://neodb.190102.xyz?cg=book",
         },
         pro: {
             url: "https://1900.live",
             limit: "all",
+            neodb: "https://neodb.190102.xyz",
         },
         cdnUrl: "https://cdn.1900.live",
     },

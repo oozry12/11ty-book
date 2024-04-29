@@ -1,8 +1,11 @@
-<h2 class="book-brand">
-  <a class="flex align-center" href="{{ '' | absoluteUrl }}">
+<h2 class="book-brand" aria-label="{{ site.title }} | {{ site.description }}" >
+  <a class="flex align-center" href="{{ '' | absoluteUrl }}" title="{{ site.title }} | {{ site.description }}">
     {% if site.icon %}  
     <img src="{{ site.icon }}" alt="Logo" />
-  {% endif %}
-    <span>{{ site.title }}</span>
+    {% endif %}
+    <div class="flex flex-direction">
+      <span class="site-title">{{ site.title }}</span>
+      <span class="site-description ellipsis">{{ site.description }}</span>
+    </div>
   </a>
 </h2>

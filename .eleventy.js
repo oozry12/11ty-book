@@ -54,6 +54,7 @@ const api = new ghostContentAPI({ ...ghost });
 
 // const axios = require("axios");
 
+const buildMode = mode[process.env.NODE_ENV.trim()];
 const loadData = mode[process.env.NODE_ENV.trim()].limit;
 const fluxToken = process.env.FLUX_TOKEN;
 
@@ -372,7 +373,7 @@ module.exports = function (config) {
     config.addCollection("douban", async function (collection) {
         if (fluxToken) {
             try {
-                const response = await fetch("https://neodb.190102.xyz");
+                const response = await fetch(buildMode.neodb);
                 let data = await response.json();
                 return data;
             } catch (error) {
