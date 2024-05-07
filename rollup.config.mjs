@@ -36,6 +36,7 @@ export default {
                 { src: "src/assets/fonts", dest: "dist/assets/" },
                 { src: "src/assets/img", dest: "dist/assets/" },
                 { src: "src/assets/svg", dest: "dist/assets/" },
+                { src: "src/assets/js/*.json", dest: "dist/assets/" },
             ],
         }),
         terser(),
