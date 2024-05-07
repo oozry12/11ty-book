@@ -6,7 +6,6 @@ import atImport from "postcss-import";
 import postcssPresetEnv from "postcss-preset-env";
 import copy from "rollup-plugin-copy";
 import terser from "@rollup/plugin-terser";
-import del from 'rollup-plugin-delete'
 
 const sourceMap = process.env.NODE_ENV.trim() === 'dev';
 

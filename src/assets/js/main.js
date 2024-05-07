@@ -6,6 +6,7 @@ import search from "./search";
 import Artalk from "./ArtalkLite";
 import quicklink from "quicklink/dist/quicklink.umd";
 import { initCopyButton } from "./code.js";
+import initMap from "./map.js"
 
 import { getMemos, parseMemos } from "./memos.js";
 
@@ -108,6 +109,7 @@ function initZoom() {
 search();
 initZoom();
 initCopyButton();
+initMap();
 
 if (navigator.serviceWorker) {
     navigator.serviceWorker.register(location.origin + "/sw.js", {

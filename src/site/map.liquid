@@ -1,0 +1,51 @@
+---
+permalink: /map/index.html
+---
+{% layout "layouts/base" %}
+
+
+{% block head %}{% include 'partials/head',title:post.title %}{% endblock %}
+
+{% block header %}{% include 'partials/header',title:post.title %}{% endblock %}
+
+
+{% block content %}
+{% for doc in collections.docs-all %}
+{% if doc.slug == 'map' %}
+{% assign page = doc %}
+{% break %}
+{% endif %}
+{% endfor %}
+<article class="markdown book-article">
+  <h1 class="book-title">
+    足迹
+  </h1>
+
+  {{ page.html }}
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
+  <div id="map" class="footer-map"></div>
+
+  {% endblock %}
+
+
+  {% block footer %}
+  {% include 'partials/footer',post:post %}
+  {% endblock %}
+
+  {% comment %} {% block comments %}
+  {% include 'partials/comment' %}
+  {% endblock %} {% endcomment %}
+
+
+
+  {% block toc %}
+  {% comment %} {% include 'partials/toc-tagloop' %} {% endcomment %}
+  {% endblock %}
+
+  {% block h-toc %}
+  {% comment %}
+  <aside class="hidden clearfix">
+    {% include 'partials/toc-tagloop' %}
+  </aside>
+  {% endcomment %}
+  {% endblock %}
