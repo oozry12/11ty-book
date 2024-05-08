@@ -349,6 +349,11 @@
     .atk-actions>span:hover {
         color: var(--color-link) !important;
     }
+
+    .atk-editor-plug-emoticons>.atk-grp-wrap>.atk-grp[data-type=image]>.atk-item {
+        height: 30px;
+        width: 30px;
+    }
 }
 
 
