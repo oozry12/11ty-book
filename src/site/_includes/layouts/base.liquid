@@ -47,7 +47,7 @@
     </div>
 
     {% comment %} {{ if default true (default .Site.Params.BookToC .Params.BookToC) }} {% endcomment %}
-    {% unless  page.url contains '/map/' %}
+    {% unless  page.url contains '/douban/' %}
     <aside class="book-toc ">
       <div class="book-toc-content">
         {% block toc %}{% endblock %}
