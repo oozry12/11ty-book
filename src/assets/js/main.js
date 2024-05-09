@@ -128,7 +128,25 @@ if (
     });
     artalk.on(
         "list-loaded",
-        changeTheme(localStorage.theme, localStorage.name)
+        function(){
+            // 添加博主样式
+            var badges = document.querySelectorAll('.atk-badge');
+
+            // 遍历这些atk-badge元素
+            badges.forEach(function(badge) {
+            // 检查元素的文本内容是否为'Admin'
+            if (badge.textContent === 'Admin') {
+                // 获取最近的atk-main父元素
+                var mainElement = badge.closest('.atk-main');
+                // 检查是否找到了atk-main元素
+                if (mainElement) {
+                // 获取atk-main元素的父元素，并为其添加atk-admin类
+                mainElement.parentNode.classList.add('atk-admin');
+                }
+            }
+            });
+            changeTheme(localStorage.theme, localStorage.name)
+        }
     );
 }
 
@@ -207,3 +225,5 @@ cardElements.forEach(function (card) {
         card.style.display = "none";
     }
 });
+
+

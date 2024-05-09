@@ -22,6 +22,20 @@ function createCopyButton(highlightDiv) {
     addCopyButtonToDom(button, highlightDiv);
 }
 
+
+function createFlodButton(highlightDiv) {
+    const button = document.createElement("button");
+    button.className = "copy-button";
+    button.type = "button";
+    button.ariaLabel = copyText;
+    button.innerText = copyText;
+    button.addEventListener("click", () =>
+        copyCodeToClipboard(button, highlightDiv)
+    );
+    addFlodButtonToDom(button, highlightDiv);
+}
+
+
 async function copyCodeToClipboard(button, highlightDiv) {
     const codeToCopy = highlightDiv.querySelector(":last-child").innerText;
     try {
@@ -72,5 +86,7 @@ function addCopyButtonToDom(button, highlightDiv) {
 export function initCopyButton() {
     document
         .querySelectorAll("pre")
-        .forEach((highlightDiv) => createCopyButton(highlightDiv));
+        .forEach(function(highlightDiv){
+            createCopyButton(highlightDiv);
+        });
 };

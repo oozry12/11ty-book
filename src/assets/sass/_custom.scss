@@ -362,17 +362,17 @@
     }
 
 
-    atk-comment-children {
+    .atk-admin  {
         display: flex;
         flex-direction: row-reverse;
     }
     
-    .atk-comment-children .atk-comment {
+    .atk-admin .atk-comment {
         display: flex;
         flex-direction: row-reverse;
     }
     
-    .atk-comment-children .atk-main {
+    .atk-admin  .atk-main {
         flex-direction: column;
         justify-content: flex-start;
         display: flex;
@@ -380,7 +380,7 @@
         margin-right: 13px;
         margin-left: 0px;
     }
-    .atk-comment-children .atk-avatar img{
+    .atk-admin  .atk-avatar img{
         height: 50px !important;
         width: 50px !important;
         max-width: 50px;
@@ -388,7 +388,7 @@
     
     /**     margin-left: 63px; **/
     
-    .atk-comment-children .atk-header {
+    .atk-admin  .atk-header {
         display: flex;
         justify-content: flex-end;
     }
