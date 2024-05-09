@@ -360,6 +360,39 @@
         height: 20px;
         width: 20px;
     }
+
+
+    atk-comment-children {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    
+    .atk-comment-children .atk-comment {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    
+    .atk-comment-children .atk-main {
+        flex-direction: column;
+        justify-content: flex-start;
+        display: flex;
+        align-items: flex-end;
+        margin-right: 9px;
+        margin-left: 0px;
+    }
+    .atk-comment-children .atk-avatar img{
+        height: 50px !important;
+        width: 50px !important;
+        max-width: 50px;
+    }
+    
+    /**     margin-left: 63px; **/
+    
+    .atk-comment-children .atk-header {
+        display: flex;
+        justify-content: flex-end;
+    }
+
 }
 
 
