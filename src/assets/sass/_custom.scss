@@ -1226,12 +1226,3 @@ pre:hover > .copy-button {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
-.tippy-box {
-    position: relative;
-    background-color: var(--color-link);
-    color: #fff;
-}
-.tippy-arrow::before {
-    color: var(--color-link);
-}
