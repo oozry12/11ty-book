@@ -6,6 +6,7 @@ import atImport from "postcss-import";
 import postcssPresetEnv from "postcss-preset-env";
 import copy from "rollup-plugin-copy";
 import terser from "@rollup/plugin-terser";
+import replace from '@rollup/plugin-replace';
 
 const sourceMap = process.env.NODE_ENV.trim() === 'dev';
 
@@ -13,6 +14,9 @@ export default {
     input: "src/assets/js/main.js",
     output: { dir: "dist/assets/", sourcemap: sourceMap, format: "es" },
     plugins: [
+        replace({
+            'process.env.NODE_ENV': JSON.stringify('production'),
+          }),
         nodeResolve(),
         commonjs(),
         babel({ babelHelpers: "bundled" }),

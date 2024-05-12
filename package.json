@@ -17,8 +17,7 @@
         "@tryghost/content-api": "^1.11.20",
         "alpinejs": "^3.13.7",
         "fontmin": "^1.0.1",
-        "mapbox-gl": "^3.3.0",
-        "tippy.js": "^6.3.7"
+        "mapbox-gl": "^3.3.0"
     },
     "devDependencies": {
         "@11ty/eleventy-plugin-vite": "^4.0.0",
@@ -31,6 +30,7 @@
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-commonjs": "^25.0.7",
         "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-replace": "^5.0.5",
         "@rollup/plugin-terser": "^0.4.4",
         "@speed-highlight/core": "^1.2.6",
         "artalk": "^2.8.3",
@@ -60,6 +60,7 @@
         "rollup-plugin-postcss": "^4.0.2",
         "sass": "^1.72.0",
         "supercluster": "^8.0.1",
-        "timeago.js": "^4.0.2"
+        "timeago.js": "^4.0.2",
+        "tippy.js": "^6.3.7"
     }
 }

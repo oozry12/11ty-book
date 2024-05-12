@@ -58,7 +58,7 @@ permalink: /douban/index.html
           {% for monthdata in month.data %}
           <div class="db--item" data-itemtype="{{ monthdata.type }}">
             {% if  monthdata.comment_text != blank  %}
-              <span class="db--icon-comment hint--top hint--large hint--rounded" aria-label="{{ monthdata.comment_text }}">{% svg 'comment' %}  </span>
+              <span class="db--icon-comment " data-tippy-content="{{ monthdata.comment_text }}">{% svg 'comment' %}  </span>
             {% endif  %}
           <img loading="lazy" src="https://images.weserv.nl/?url={{ monthdata.item.cover_image_url }}"
               referrerpolicy="no-referrer" class="db--image" alt="{{ monthdata.item.title }}">

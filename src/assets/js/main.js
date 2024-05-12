@@ -7,6 +7,9 @@ import Artalk from "./ArtalkLite";
 import quicklink from "quicklink/dist/quicklink.umd";
 import { initCopyButton } from "./code.js";
 import initMap from "./map.js"
+import tippy from 'tippy.js';
+import initWebSocket from "./actives.js"
+
 
 import { getMemos, parseMemos } from "./memos.js";
 
@@ -110,6 +113,7 @@ search();
 initZoom();
 initCopyButton();
 initMap();
+initWebSocket();
 
 if (navigator.serviceWorker) {
     navigator.serviceWorker.register(location.origin + "/sw.js", {
@@ -171,42 +175,6 @@ function changeTheme(theme, name) {
     localStorage.name = name;
 }
 
-// var options = {
-//     // optional
-//     contentSelector: ".markdown",
-//     copyiconclass: "test",
-//     copyIconContent:
-//         "<img src='" +
-//         location.origin +
-//         "/assets/svg/theme.svg' class='book-icon' /></span>",
-// };
-
-// window.highlightJsBadge(options);
-
-// var options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
-// function success(pos) {
-//     var crd = pos.coords;
-//     console.log("Your current position is:");
-//     console.log("Latitude : " + crd.latitude);
-//     console.log("Longitude: " + crd.longitude);
-//     console.log("More or less " + crd.accuracy + " meters.");
-// }
-// function error(err) {
-//     console.warn("ERROR(" + err.code + "): " + err.message);
-// }
-// navigator.geolocation.getCurrentPosition(success, error, options);
-
-// 选择所有具有data-itemtype属性的元素
-// const elements = document.querySelectorAll('[data-itemtype]');
-
-// // 遍历这些元素
-// elements.forEach(function(el) {
-//   // 检查data-itemtype的值是否不等于'book'
-//   if (el.getAttribute('data-itemtype') !== 'book') {
-//     // 如果不等于，隐藏该元素
-//     el.style.display = 'none';
-//   }
-
 // // 隐藏所有非当前类型的元素
 const cardElements = document.querySelectorAll(".db--listBydate");
 
@@ -226,4 +194,10 @@ cardElements.forEach(function (card) {
     }
 });
 
+const title = tippy('.actives img', {
+    placement: 'right',
+    maxWidth: 300,
+  });
 
+
+window.activeTippy = title;
