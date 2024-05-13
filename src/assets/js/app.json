@@ -10,9 +10,9 @@
         "action": "冲浪"
     },
     "code": {
-        "title": "VSCODE",
+        "title": "Visual Studio Code",
         "url": "code.png",
-        "action": "编码"
+        "action": "捣鼓一些小玩意儿"
     },
     "lx-music-desktop.exe": {
         "title": "洛雪音乐播放器",
