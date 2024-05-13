@@ -114,11 +114,7 @@ function onMessage(event) {
             }
         );
     } else if (!(processName in app)) {
-        counter++;
-        if (counter == 2) {
-            activs.classList.add("exit");
-            counter = 0;
-        }
+        activs.classList.add("exit");
     }
     console.log("5未匹配次数：" + counter);
 }
