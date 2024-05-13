@@ -92,7 +92,7 @@ function onMessage(event) {
 
     // 处理接收到的消息
     if (activs.dataset.app != data.process && processName in app) {
-        fetch(cdn + app[data.process.toLowerCase()].url + "!20w").then(
+        fetch(cdn + app[processName].url + "!20w").then(
             function () {
                 activs.style.display = "block";
                 activs.classList.add("exit");
@@ -100,7 +100,7 @@ function onMessage(event) {
                     document.querySelector(".actives img").src =
                         cdn + app[processName].url + "!20w";
                     activs.classList.remove("exit");
-                    activs.dataset.app = data.process;
+                    activs.dataset.app = processName;
                     activeTippy.forEach(function (e) {
                         e.setContent(
                             "@1900 在使用 " +
