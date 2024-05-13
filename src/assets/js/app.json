@@ -48,5 +48,16 @@
         "title": "Tabby",
         "url": "tabby.png",
         "action": "维护服务器"
+    },
+    "et": {
+        "title": "Excel",
+        "url": "excel.png",
+        "action": "统计数据中"
+    },
+    "wps": {
+        "title": "Word",
+        "url": "word.png",
+        "action": "编写文档中"
     }
+    
 }
