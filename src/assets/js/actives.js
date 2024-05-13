@@ -85,7 +85,7 @@ function onOpen(event) {
 
 // 接收到消息的处理函数
 function onMessage(event) {
-    console.log("WebSocket message received:", event.data);
+    //console.log("WebSocket message received:", event.data);
     var data = JSON.parse(event.data);
     var activs = document.querySelector(".actives");
     const processName = data.process.toLowerCase();
@@ -116,7 +116,7 @@ function onMessage(event) {
     } else if (!(processName in app)) {
         activs.classList.add("exit");
     }
-    console.log("5未匹配次数：" + counter);
+    //console.log("5未匹配次数：" + counter);
 }
 
 // 连接关闭的处理函数
