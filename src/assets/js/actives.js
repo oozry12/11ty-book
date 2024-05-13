@@ -1,6 +1,9 @@
 // 定义WebSocket的URL
-const wsUrl = "wss://api.1900.live/actives_ws";
+// const wsUrl = "ws://localhost:8081/update";
+// const appUrl = "http://localhost:8080/assets/app.json";
 const cdn = "https://cdn.1900.live/apps/";
+
+const wsUrl = "wss://api.1900.live/actives_ws";
 const appUrl = "https://1900.live/assets/app.json";
 
 let app = {};
@@ -58,28 +61,23 @@ let counter = 0;
 
 // 初始化WebSocket连接
 export default function initWebSocket() {
-    ws2 = new WebSocket(wsUrl);
-
-    updateAppList();
-    // 绑定事件处理函数
-    ws2.onopen = onOpen;
-    ws2.onmessage = onMessage;
-    ws2.onclose = onClose;
-    ws2.onerror = onError;
-}
-
-function updateAppList(){
     fetch(appUrl).then((rep) => {
         rep.json().then((data) => {
-            // 绑定事件处理函数
+            ws2 = new WebSocket(wsUrl);
+            // 初始化app列表
             app = data;
+            // 绑定事件处理函数
+            ws2.onopen = onOpen;
+            ws2.onmessage = onMessage;
+            ws2.onclose = onClose;
+            ws2.onerror = onError;
         });
     });
 }
 
 // 连接成功的处理函数
 function onOpen(event) {
-    console.log("WebSocket connection opened:", event);
+    // console.log("WebSocket connection opened:", event);
     // 可以在这里发送消息等操作
 }
 
@@ -92,27 +90,25 @@ function onMessage(event) {
 
     // 处理接收到的消息
     if (activs.dataset.app != data.process && processName in app) {
-        fetch(cdn + app[processName].url + "!20w").then(
-            function () {
-                activs.style.display = "block";
-                activs.classList.add("exit");
-                setTimeout(function name(params) {
-                    document.querySelector(".actives img").src =
-                        cdn + app[processName].url + "!20w";
-                    activs.classList.remove("exit");
-                    activs.dataset.app = processName;
-                    activeTippy.forEach(function (e) {
-                        e.setContent(
-                            "@1900 在使用 " +
-                                app[processName].title +
-                                " " +
-                                app[processName].action
-                        );
-                    });
-                    counter = 0;
-                }, 500);
-            }
-        );
+        fetch(cdn + app[processName].url + "!20w").then(function () {
+            activs.style.display = "block";
+            activs.classList.add("exit");
+            setTimeout(function() {
+                document.querySelector(".actives img").src =
+                    cdn + app[processName].url + "!20w";
+                activs.classList.remove("exit");
+                activs.dataset.app = processName;
+                activeTippy.forEach(function (e) {
+                    e.setContent(
+                        "@1900 在使用 " +
+                            app[processName].title +
+                            " " +
+                            app[processName].action
+                    );
+                });
+                counter = 0;
+            }, 500);
+        });
     } else if (!(processName in app)) {
         activs.classList.add("exit");
     }
