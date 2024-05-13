@@ -17,7 +17,8 @@ module.exports = (image, isLocal = false) => {
     // If image is local, determine the width of the image and then generate
     // markup for images at sizes smaller than the image
     imageWidths.forEach((width) => {
-      imageSrcset.push(`${image}!${width}w ${width}w`);
+      let img = image.endsWith('.gif') == true ? image:`${image}!${width}w ${width}w`
+      imageSrcset.push(img);
     });
   } else if(image.match('unsplash.com')){
     imageWidths.forEach((width) => {
