@@ -199,5 +199,10 @@ const title = tippy('.actives img', {
     maxWidth: 300,
   });
 
+tippy('.db--icon-comment', {
+    placement: 'bottom',
+    maxWidth: 300,
+  });
+
 
 window.activeTippy = title;
