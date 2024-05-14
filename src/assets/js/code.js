@@ -4,11 +4,11 @@ var scriptBundle = document.getElementById("script-bundle");
 var copyText =
     scriptBundle && scriptBundle.getAttribute("data-copy")
         ? scriptBundle.getAttribute("data-copy")
-        : "Copy";
+        : "复制";
 var copiedText =
     scriptBundle && scriptBundle.getAttribute("data-copied")
         ? scriptBundle.getAttribute("data-copied")
-        : "Copied";
+        : "✔";
 
 function createCopyButton(highlightDiv) {
     const button = document.createElement("button");
@@ -25,14 +25,18 @@ function createCopyButton(highlightDiv) {
 
 function createFlodButton(highlightDiv) {
     const button = document.createElement("button");
-    button.className = "copy-button";
+    button.className = "flod-button";
     button.type = "button";
-    button.ariaLabel = copyText;
-    button.innerText = copyText;
-    button.addEventListener("click", () =>
-        copyCodeToClipboard(button, highlightDiv)
-    );
-    addFlodButtonToDom(button, highlightDiv);
+    button.ariaLabel = '展开';
+    button.innerText = '展开';
+    button.addEventListener("click", function(){
+        highlightDiv.classList.remove('limit-hight');
+        this.hidden = true
+    });
+    if(highlightDiv.scrollHeight > 400){
+        highlightDiv.classList.add('limit-hight')
+        addCopyButtonToDom(button, highlightDiv);
+    }
 }
 
 
@@ -88,5 +92,6 @@ export function initCopyButton() {
         .querySelectorAll("pre")
         .forEach(function(highlightDiv){
             createCopyButton(highlightDiv);
+            createFlodButton(highlightDiv)
         });
 };
