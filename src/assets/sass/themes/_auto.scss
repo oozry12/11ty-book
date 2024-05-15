@@ -1,27 +1,36 @@
+// mixin code style
+@import "../plugins/dracula.min";
+@import "../plugins/lightcode";
+
 :root {
   @include theme-light;
-
+  @include dark-code;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    @include theme-dark;@include theme-dark;
+    @include theme-dark;
   }
 }
 
 html.dark{
   @include theme-dark;
+
 }
 
 html.light{
   @include theme-light;
+  @include light-code;
 }
+
 html.yayu{
   @include theme-yayu;
 }
+
 html.yuhang{
   @include theme-yuhang;
 }
+
 html.herblue{
   @include theme-herblue;
 }
