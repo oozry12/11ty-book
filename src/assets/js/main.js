@@ -4,12 +4,11 @@ import Alpine from "alpinejs";
 import mediumZoom from "medium-zoom";
 import search from "./search";
 import Artalk from "./ArtalkLite";
-import quicklink from "quicklink/dist/quicklink.umd";
 import { initCopyButton } from "./code.js";
-import initMap from "./map.js"
-import tippy from 'tippy.js';
-import initWebSocket from "./actives.js"
-
+import initMap from "./map.js";
+import tippy from "tippy.js";
+import initWebSocket from "./actives.js";
+import fillGrid from "./relitu.js";
 
 import { getMemos, parseMemos } from "./memos.js";
 
@@ -69,7 +68,7 @@ Alpine.data("douban", () => ({
                 // 如果存在任何未隐藏的子元素，则将allHidden设置为false
                 if (dateListCard.style.display !== "none") {
                     allHidden = false;
-                    card.style.display = ''
+                    card.style.display = "";
                 }
             });
 
@@ -79,12 +78,12 @@ Alpine.data("douban", () => ({
             }
         });
     },
-    active: function(el){
-        document.querySelectorAll('.db--navItem').forEach(function(item){
-            item.classList.remove('current')
+    active: function (el) {
+        document.querySelectorAll(".db--navItem").forEach(function (item) {
+            item.classList.remove("current");
         });
-        el.currentTarget.classList.add('current')
-    }
+        el.currentTarget.classList.add("current");
+    },
 }));
 
 Alpine.start();
@@ -130,33 +129,27 @@ if (
         server: commentinfo.server, // 后端地址
         site: commentinfo.name, // 你的站点名
     });
-    artalk.on(
-        "list-loaded",
-        function(){
-            // 添加博主样式
-            var badges = document.querySelectorAll('.atk-badge');
+    artalk.on("list-loaded", function () {
+        // 添加博主样式
+        var badges = document.querySelectorAll(".atk-badge");
 
-            // 遍历这些atk-badge元素
-            badges.forEach(function(badge) {
+        // 遍历这些atk-badge元素
+        badges.forEach(function (badge) {
             // 检查元素的文本内容是否为'Admin'
-            if (badge.textContent === 'Admin') {
+            if (badge.textContent === "Admin") {
                 // 获取最近的atk-main父元素
-                var mainElement = badge.closest('.atk-main');
+                var mainElement = badge.closest(".atk-main");
                 // 检查是否找到了atk-main元素
                 if (mainElement) {
-                // 获取atk-main元素的父元素，并为其添加atk-admin类
-                mainElement.parentNode.classList.add('atk-admin');
+                    // 获取atk-main元素的父元素，并为其添加atk-admin类
+                    mainElement.parentNode.classList.add("atk-admin");
                 }
             }
-            });
-            changeTheme(localStorage.theme, localStorage.name)
-        }
-    );
+        });
+        changeTheme(localStorage.theme, localStorage.name);
+    });
 }
 
-window.addEventListener("load", () => {
-    quicklink.listen();
-});
 
 function changeTheme(theme, name) {
     if (theme == "auto") {
@@ -194,15 +187,25 @@ cardElements.forEach(function (card) {
     }
 });
 
-const title = tippy('.actives img', {
-    placement: 'right',
+const title = tippy(".actives img", {
+    placement: "right",
     maxWidth: 300,
-  });
+});
 
-tippy('.db--icon-comment', {
-    placement: 'bottom',
+tippy(".db--icon-comment", {
+    placement: "bottom",
     maxWidth: 300,
-  });
+});
 
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("/assets/relitu-data.json")
+        .then((respone) => respone.json())
+        .then((posts) => {
+            // 现在使用dateBuild函数处理数据，并将结果传递给fillGrid函数
+            fillGrid(posts);
+            tippy(".item-tippy", { allowHTML: true, interactive: true ,maxWidth: 'none',appendTo: () => document.body,});
+        });
+});
 
 window.activeTippy = title;
+window.tippy = tippy;

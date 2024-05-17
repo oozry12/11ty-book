@@ -1,0 +1,15 @@
+---
+permalink: /assets/relitu-data.json
+---
+[
+  {% for post in collections.posts %}
+  {
+      "id": {{ forloop.index }},
+      "href": "{{ post.slug | articleUrl }}",
+      "date": "{{post.published_at}}",
+      "title": {{ post.title | json }},
+      "section": "{{ post.tags | map: "name"  | join: "," }}",
+      "published": "{{ post.published_at }}",
+      "word_count": {{ post.html | strip_html | strip_newlines | escape | json | size}}
+  }{% if forloop.last != true %},{% endif %}{% endfor %}
+]
