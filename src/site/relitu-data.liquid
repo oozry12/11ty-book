@@ -2,7 +2,12 @@
 permalink: /assets/relitu-data.json
 ---
 [
+  {% assign count = 0 %}
   {% for post in collections.posts %}
+    {% if count >= 100 %}
+      {% break %}
+    {% endif %}
+    {% assign count = count | plus: 1 %}
   {
       "id": {{ forloop.index }},
       "href": "{{ post.slug | articleUrl }}",

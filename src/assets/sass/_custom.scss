@@ -1283,9 +1283,6 @@ pre:hover > .copy-button {
         min-height: 18px;
         position: relative;
 
-        a{
-            color:var(--hint-color-info)
-        }
 
     }
 
@@ -1303,7 +1300,7 @@ pre:hover > .copy-button {
 
     div:nth-child(9) > div:after{
         position: absolute;
-        right: -20px;
+        right: -18px;
         color: var(--gray-500);
     }
 

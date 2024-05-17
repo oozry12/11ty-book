@@ -8,7 +8,6 @@ import { initCopyButton } from "./code.js";
 import initMap from "./map.js";
 import tippy from "tippy.js";
 import initWebSocket from "./actives.js";
-import fillGrid from "./relitu.js";
 
 import { getMemos, parseMemos } from "./memos.js";
 
@@ -195,16 +194,6 @@ const title = tippy(".actives img", {
 tippy(".db--icon-comment", {
     placement: "bottom",
     maxWidth: 300,
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("/assets/relitu-data.json")
-        .then((respone) => respone.json())
-        .then((posts) => {
-            // 现在使用dateBuild函数处理数据，并将结果传递给fillGrid函数
-            fillGrid(posts);
-            tippy(".item-tippy", { allowHTML: true, interactive: true ,maxWidth: 'none',appendTo: () => document.body,});
-        });
 });
 
 window.activeTippy = title;
