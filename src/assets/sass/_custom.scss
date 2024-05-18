@@ -1321,12 +1321,14 @@ pre:hover > .copy-button {
 
 .post_action {
     .post_like {
+        align-items: center;
         cursor: pointer;
+        display: flex;
+        height: 6rem;
         position: relative;
         text-align: center;
-        display: flex;
-        height: 5rem;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
 
         svg {
             fill: none;
