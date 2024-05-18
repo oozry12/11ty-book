@@ -1,5 +1,8 @@
 <div x-data="post_action" class="post_action flex flex-wrap justify-center">
     <div class="post_like" x-show="initLike('{{ post.id  }}')" data-postid="{{ post.id  }}" @click="like('{{ post.id  }}')">
         {% svg 'like', '0 0 26 26' %}
+        <div class="post_like_desc">
+            「 还好我们还有文字... 」
+        </div>
     </div>
 </div>

@@ -1343,7 +1343,12 @@ pre:hover > .copy-button {
             transform-origin: center;
         }
     }
-
+    .post_like_desc{
+        font-style: oblique;
+        padding: 8px 0px;
+        color: var(--gray-500);
+        font-size: 14px;
+    }
 
     
 }
