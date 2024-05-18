@@ -11,6 +11,8 @@ import initWebSocket from "./actives.js";
 
 import { getMemos, parseMemos } from "./memos.js";
 
+var apiUrl = "https://api.1900.live";
+
 window.Alpine = Alpine;
 Alpine.data("theme", () => ({
     themeName: localStorage.name,
@@ -33,6 +35,47 @@ Alpine.data("memos", () => ({
         this.getMemoss();
     },
     initZoom: initZoom,
+}));
+Alpine.data("post_action", () => ({
+    apiUrl: apiUrl,
+    like: (post_id) => {
+        var likelist = localStorage.getItem("lieklist") || ""
+        var likeButton = document.querySelector('.post_like')
+
+        if (likelist.indexOf(post_id+',') != -1) {
+            console.log("你已经点过赞了");
+            likeButton.classList.add('active')
+
+        } else {
+            fetch(`${apiUrl}/post/${post_id}/like`, { method: "post" })
+                .then((res) => {
+                    return res.json();
+                })
+                .then((data) => {
+                    console.log("点赞成功" + JSON.stringify(data));
+                    localStorage.setItem("lieklist", likelist + post_id +',')
+                    likeButton.classList.add('active')
+                }).catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+    },
+    initLike: (post_id) => {
+        var likelist = localStorage.getItem("lieklist") || ""
+        var likeButton = document.querySelector('.post_like')
+        if (likelist.indexOf(post_id+',') != -1) {
+            likeButton.classList.add('active')
+        }
+        fetch(`${apiUrl}/post/${post_id}/like`).then((res) => {return res.json()}).then((data) => {
+            if(data){
+                likeButton.dataset.like = data.likes
+
+            }
+        })
+        return true;
+
+    },
+    view: () => {},
 }));
 
 Alpine.data("douban", () => ({
@@ -148,7 +191,6 @@ if (
         changeTheme(localStorage.theme, localStorage.name);
     });
 }
-
 
 function changeTheme(theme, name) {
     if (theme == "auto") {

@@ -21,6 +21,8 @@ permalink: /{{ post.slug }}/
     {% include  "partials/post-meta",img:true,post:post %}
     {{ post.html  }} 
   </article>
+  {% include "partials/post-action" %}
+
 {% endblock %}
 
 
@@ -29,6 +31,8 @@ permalink: /{{ post.slug }}/
 {% endblock %}
 
 {% block comments %}
+
+
 {% include 'partials/comment' %}
 {% endblock %}
 

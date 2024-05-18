@@ -1282,8 +1282,6 @@ pre:hover > .copy-button {
         justify-content: center;
         min-height: 18px;
         position: relative;
-
-
     }
 
     .item-info {
@@ -1291,35 +1289,77 @@ pre:hover > .copy-button {
         height: 100%;
         width: 100%;
         background-color: var(--gray-200);
-        border-radius: .25rem;
+        border-radius: 0.25rem;
 
         font-size: 10px;
         height: 100%;
         width: 100%;
     }
 
-    div:nth-child(9) > div:after{
+    div:nth-child(9) > div:after {
         position: absolute;
         right: -18px;
         color: var(--gray-500);
     }
 
-    div:nth-child(9) > div:nth-child(1):after{
+    div:nth-child(9) > div:nth-child(1):after {
         content: "一";
-
     }
-    
-    div:nth-child(9) > div:nth-child(3):after{
+
+    div:nth-child(9) > div:nth-child(3):after {
         content: "三";
     }
-    
-    div:nth-child(9) > div:nth-child(5):after{
+
+    div:nth-child(9) > div:nth-child(5):after {
         content: "五";
     }
-    
-    
-    div:nth-child(9) > div:nth-child(7):after{
+
+    div:nth-child(9) > div:nth-child(7):after {
         content: "日";
     }
-
 }
+
+.post_action {
+    .post_like {
+        cursor: pointer;
+        position: relative;
+        text-align: center;
+        display: flex;
+        height: 5rem;
+        align-items: center;
+
+        svg {
+            fill: none;
+            stroke: var(--body-font-color);
+            height: 1.5em;
+            margin-inline-end: 00;
+            width: 1.5em;
+        }
+        &.active svg{
+            fill: var(--hint-color-danger);
+            stroke: var(--hint-color-danger);
+
+            animation: growAndFade 1s 1;
+            transform-origin: center;
+        }
+    }
+
+
+    
+}
+
+
+@keyframes growAndFade {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(2);
+      opacity: 0.3; /* 这里调整透明度，以符合动画结束立即恢复的需求 */
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
