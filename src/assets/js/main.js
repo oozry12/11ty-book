@@ -63,19 +63,46 @@ Alpine.data("post_action", () => ({
     initLike: (post_id) => {
         var likelist = localStorage.getItem("lieklist") || ""
         var likeButton = document.querySelector('.post_like')
+        var likeText = document.querySelector('.post_likes')
         if (likelist.indexOf(post_id+',') != -1) {
             likeButton.classList.add('active')
         }
         fetch(`${apiUrl}/post/${post_id}/like`).then((res) => {return res.json()}).then((data) => {
             if(data){
                 likeButton.dataset.like = data.likes
-
+                likeText.innerText = data.likes
             }
         })
         return true;
 
     },
-    view: () => {},
+    initViews: (post_id) => {
+        var viewlist = localStorage.getItem("viewlist") || ""
+        var viewText = document.querySelector('.post_views')
+
+        if (viewlist.indexOf(post_id+',') != -1) {
+            fetch(`${apiUrl}/post/${post_id}/views`).then((res) => {return res.json()}).then((data) => {
+                if(data){
+                    viewText.innerText = data.Views
+                }
+            })
+
+        } else {
+            fetch(`${apiUrl}/post/${post_id}/views`, { method: "post" })
+                .then((res) => {
+                    return res.json();
+                })
+                .then((data) => {
+                    console.log("浏览量" + JSON.stringify(data));
+                    localStorage.setItem("viewlist", viewlist + post_id +',')
+                    viewText.innerText = data.Views
+                }).catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+
+        return true
+    },
 }));
 
 Alpine.data("douban", () => ({

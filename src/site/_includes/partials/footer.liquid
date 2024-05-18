@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-between">
+<div class="flex flex-wrap justify-start">
 
 {% if post.updated_at %}
   <div>
@@ -9,6 +9,21 @@
   </div>
 {% endif %}
 
+
+<div>
+  <a class="flex align-center" href="#" title="Last modified by" rel="noopener">
+    {% svg 'like' %}
+    <span class="post_likes" ></span>
+  </a>
+</div>
+
+
+<div>
+  <a class="flex align-center" href="#" title="Last modified by" rel="noopener">
+    {% svg 'views' %}
+    <span class="post_views" x-data="post_action" x-show="initViews('{{ post.id  }}')"></span>
+  </a>
+</div>
 {% comment %} 
 {{ if and .File .Site.Params.BookRepo .Site.Params.BookEditPath }}
   <div>

@@ -345,6 +345,11 @@ body[dir="rtl"] .book-menu {
         width: 1em;
         margin-inline-end: $padding-8;
     }
+
+    div{
+        gap:20px;
+        
+    }
 }
 
 .book-comments {
