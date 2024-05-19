@@ -405,16 +405,27 @@ pre:hover > .copy-button {
 }
 
 .copy-button {
-    visibility: hidden;
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 10;
-    width: 4rem;
+    align-items: center;
+    background-color: var(--gray-500);
+    border: 1px solid var(--gray-500);
+    border-radius: .25rem;
+    color: var(--body-font-color);
     cursor: pointer;
-    white-space: nowrap;
+    display: flex;
+    height: 25px;
+    justify-content: center;
     line-height: 1.5rem;
-    opacity: 0.9;
+    opacity: .9;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 26px;
+    visibility: hidden;
+    z-index: 10;
+
+    svg{
+        margin-inline-end: 0;
+    }
 }
 
 .copy-button:hover,

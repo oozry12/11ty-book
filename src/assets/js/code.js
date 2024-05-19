@@ -1,5 +1,7 @@
 // 脚本来自 https://blowfish.page/
 
+import cocoMessage from "./coco-message";
+
 var scriptBundle = document.getElementById("script-bundle");
 var copyText =
     scriptBundle && scriptBundle.getAttribute("data-copy")
@@ -16,6 +18,20 @@ function createCopyButton(highlightDiv) {
     button.type = "button";
     button.ariaLabel = copyText;
     button.innerText = copyText;
+    button.addEventListener("click", () =>
+        copyCodeToClipboard(button, highlightDiv)
+    );
+    addCopyButtonToDom(button, highlightDiv);
+}
+
+function createCopyButton2(highlightDiv) {
+    const button = document.createElement("div");
+    button.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="book-icon"><use xlink:href="/assets/svg/icons.svg#copy"></use></svg>
+    `
+    button.className = "copy-button";
+    button.type = "button";
+    button.ariaLabel = copyText;
     button.addEventListener("click", () =>
         copyCodeToClipboard(button, highlightDiv)
     );
@@ -74,10 +90,9 @@ function copyCodeBlockExecCommand(codeToCopy, highlightDiv) {
 }
 
 function codeWasCopied(button) {
+    cocoMessage.success('代码已复制 😊')
     button.blur();
-    button.innerText = copiedText;
     setTimeout(function () {
-        button.innerText = copyText;
     }, 2000);
 }
 
@@ -91,7 +106,7 @@ export function initCopyButton() {
     document
         .querySelectorAll("pre")
         .forEach(function(highlightDiv){
-            createCopyButton(highlightDiv);
+            createCopyButton2(highlightDiv);
             createFlodButton(highlightDiv)
         });
 };

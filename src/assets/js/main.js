@@ -50,7 +50,7 @@ Alpine.data("post_action", () => ({
         var likeText = document.querySelector(".post_likes");
 
         if (likelist.indexOf(post_id + ",") != -1) {
-            cocoMessage.success( "你已经点过赞了");
+            cocoMessage.success( "你已经点过赞了 ❤️");
             likeButton.classList.add("active");
         } else {
             fetch(`${apiUrl}/post/${post_id}/like`, { method: "post" })
