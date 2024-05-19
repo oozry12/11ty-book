@@ -554,6 +554,7 @@
     padding-right: 0.8em;
     line-height: 1.25em;
     font-style: normal;
+    color: var(--body-font-color);
 }
 
 .kg-callout-card div.kg-callout-text {
