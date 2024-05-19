@@ -39,15 +39,16 @@ function createCopyButton2(highlightDiv) {
 }
 
 
-function createFlodButton(highlightDiv) {
-    const button = document.createElement("button");
-    button.className = "flod-button";
-    button.type = "button";
+function createFoldButton(highlightDiv) {
+    const button = document.createElement("div");
+    button.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="book-icon"><use xlink:href="/assets/svg/icons.svg#fold"></use></svg>展开
+    `
+    button.className = "fold-button";
     button.ariaLabel = '展开';
-    button.innerText = '展开';
     button.addEventListener("click", function(){
         highlightDiv.classList.remove('limit-hight');
-        this.hidden = true
+        this.remove()
     });
     if(highlightDiv.scrollHeight > 400){
         highlightDiv.classList.add('limit-hight')
@@ -107,6 +108,6 @@ export function initCopyButton() {
         .querySelectorAll("pre")
         .forEach(function(highlightDiv){
             createCopyButton2(highlightDiv);
-            createFlodButton(highlightDiv)
+            createFoldButton(highlightDiv)
         });
 };

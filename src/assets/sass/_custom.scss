@@ -1235,15 +1235,14 @@ pre:hover > .copy-button {
     margin-bottom: 20px;
 }
 
-.flod-button {
-    background: var(--gray-200);
-    border: 1px solid var(--gray-200);
-    border-radius: 6px;
-    bottom: 18px;
+.fold-button {
+    align-items: baseline;
+    bottom: 0;
     color: var(--gray-700);
     cursor: pointer;
-    font-size: 15px;
-    height: 27px;
+    display: flex;
+    font-size: 11px;
+    height: 20px;
     left: 50%;
     padding: 4px 20px 1px;
     position: absolute;
