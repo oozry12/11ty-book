@@ -8,12 +8,16 @@ import { initCopyButton } from "./code.js";
 import initMap from "./map.js";
 import tippy from "tippy.js";
 import initWebSocket from "./actives.js";
+import cocoMessage from "./coco-message.js";
 
 import { getMemos, parseMemos } from "./memos.js";
 
 var apiUrl = "https://api.1900.live";
 // var apiUrl = "http://localhost:3000";
 
+cocoMessage.config({
+
+})
 
 window.Alpine = Alpine;
 Alpine.data("theme", () => ({
@@ -46,7 +50,7 @@ Alpine.data("post_action", () => ({
         var likeText = document.querySelector(".post_likes");
 
         if (likelist.indexOf(post_id + ",") != -1) {
-            console.log("你已经点过赞了");
+            cocoMessage.success( "你已经点过赞了");
             likeButton.classList.add("active");
         } else {
             fetch(`${apiUrl}/post/${post_id}/like`, { method: "post" })

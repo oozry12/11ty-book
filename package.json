@@ -36,6 +36,7 @@
         "artalk": "^2.8.3",
         "cal-heatmap": "^4.2.4",
         "cheerio": "^1.0.0-rc.12",
+        "coco-message": "^2.0.3",
         "eleventy-plugin-html-validate": "^0.0.5",
         "fuse.js": "^7.0.0",
         "highlight.js": "^11.9.0",

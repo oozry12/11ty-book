@@ -2635,6 +2635,11 @@ cloneable-readable@^1.0.0:
     process-nextick-args "^2.0.0"
     readable-stream "^2.3.5"
 
+coco-message@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/coco-message/-/coco-message-2.0.3.tgz#09a26a7b412d48c0004cde562da9e910186a254b"
+  integrity sha512-VehYyPqz6mf3Rdqt0ZjsduzovkKPMz4UzKYb8OaPR7Litiyc1Mqyyl/Nex9o5CfrhCae37QU4P37Ant5ACIYJQ==
+
 code-point@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/code-point/-/code-point-1.1.0.tgz#999841f51f54ccae4a0dabbc869063234603fecd"

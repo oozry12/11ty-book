@@ -1337,7 +1337,7 @@ pre:hover > .copy-button {
             margin-inline-end: 00;
             width: 1.5em;
         }
-        &.active svg{
+        &.active svg {
             fill: var(--hint-color-danger);
             stroke: var(--hint-color-danger);
 
@@ -1345,28 +1345,44 @@ pre:hover > .copy-button {
             transform-origin: center;
         }
     }
-    .post_like_desc{
+    .post_like_desc {
         font-style: oblique;
         padding: 8px 0px;
         color: var(--gray-500);
         font-size: 14px;
     }
-
-    
 }
-
 
 @keyframes growAndFade {
     0% {
-      transform: scale(1);
-      opacity: 1;
+        transform: scale(1);
+        opacity: 1;
     }
     50% {
-      transform: scale(2);
-      opacity: 0.3; /* 这里调整透明度，以符合动画结束立即恢复的需求 */
+        transform: scale(2);
+        opacity: 0.3; /* 这里调整透明度，以符合动画结束立即恢复的需求 */
     }
     100% {
-      transform: scale(1);
-      opacity: 1;
+        transform: scale(1);
+        opacity: 1;
     }
-  }
+}
+
+
+
+.coco-msg-stage {
+    right: 20px !important;
+    bottom: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    transform: translate(0, 0) !important;
+    justify-content: flex-end !important;
+    padding-top: unset !important;
+    padding-top: unset !important;
+
+    .coco-msg {
+        color: var(--body-background) !important;
+        background-color: var(--gray-700) !important;   
+    }
+}
