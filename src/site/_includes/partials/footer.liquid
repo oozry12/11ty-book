@@ -7,8 +7,6 @@
       <span>{{ post.updated_at | htmlDate }}</span>
     </a>
   </div>
-{% endif %}
-
 
 <div>
   <a class="flex align-center" href="#" title="Likes" rel="noopener">
@@ -24,6 +22,9 @@
     <span class="post_views" x-data="post_action" x-show="initViews('{{ post.id  }}')"></span>
   </a>
 </div>
+
+{% endif %}
+
 {% comment %} 
 {{ if and .File .Site.Params.BookRepo .Site.Params.BookEditPath }}
   <div>
