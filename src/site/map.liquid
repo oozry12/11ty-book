@@ -24,28 +24,28 @@ permalink: /map/index.html
   {{ page.html }}
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
   <div id="map" class="footer-map"></div>
-
-  {% endblock %}
-
-
-  {% block footer %}
-  {% include 'partials/footer',post:post %}
-  {% endblock %}
-
-  {% comment %} {% block comments %}
-  {% include 'partials/comment' %}
-  {% endblock %} {% endcomment %}
+</article>
+{% endblock %}
 
 
+{% block footer %}
+{% include 'partials/footer',post:post %}
+{% endblock %}
 
-  {% block toc %}
-  {% comment %} {% include 'partials/toc-tagloop' %} {% endcomment %}
-  {% endblock %}
+{% comment %} {% block comments %}
+{% include 'partials/comment' %}
+{% endblock %} {% endcomment %}
 
-  {% block h-toc %}
-  {% comment %}
-  <aside class="hidden clearfix">
-    {% include 'partials/toc-tagloop' %}
-  </aside>
-  {% endcomment %}
-  {% endblock %}
+
+
+{% block toc %}
+{% comment %} {% include 'partials/toc-tagloop' %} {% endcomment %}
+{% endblock %}
+
+{% block h-toc %}
+{% comment %}
+<aside class="hidden clearfix">
+  {% include 'partials/toc-tagloop' %}
+</aside>
+{% endcomment %}
+{% endblock %}
