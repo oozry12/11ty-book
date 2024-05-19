@@ -1391,6 +1391,9 @@ pre:hover > .copy-button {
     justify-content: flex-end !important;
     padding-top: unset !important;
     padding-top: unset !important;
+    left: auto !important;
+    max-height: 1%;
+    margin-top: auto;
 
     .coco-msg {
         color: var(--body-background) !important;
