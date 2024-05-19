@@ -11,7 +11,9 @@ import initWebSocket from "./actives.js";
 
 import { getMemos, parseMemos } from "./memos.js";
 
-var apiUrl = "https://api.1900.live";
+// var apiUrl = "https://api.1900.live";
+var apiUrl = "http://localhost:3000";
+
 
 window.Alpine = Alpine;
 Alpine.data("theme", () => ({
@@ -39,13 +41,13 @@ Alpine.data("memos", () => ({
 Alpine.data("post_action", () => ({
     apiUrl: apiUrl,
     like: (post_id) => {
-        var likelist = localStorage.getItem("lieklist") || ""
-        var likeButton = document.querySelector('.post_like')
+        var likelist = localStorage.getItem("lieklist") || "";
+        var likeButton = document.querySelector(".post_like");
+        var likeText = document.querySelector(".post_likes");
 
-        if (likelist.indexOf(post_id+',') != -1) {
+        if (likelist.indexOf(post_id + ",") != -1) {
             console.log("你已经点过赞了");
-            likeButton.classList.add('active')
-
+            likeButton.classList.add("active");
         } else {
             fetch(`${apiUrl}/post/${post_id}/like`, { method: "post" })
                 .then((res) => {
@@ -53,40 +55,64 @@ Alpine.data("post_action", () => ({
                 })
                 .then((data) => {
                     console.log("点赞成功" + JSON.stringify(data));
-                    localStorage.setItem("lieklist", likelist + post_id +',')
-                    likeButton.classList.add('active')
-                }).catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
+                    localStorage.setItem("lieklist", likelist + post_id + ",");
+                    likeButton.classList.add("active");
+                    likeText.innerText = data.likes
+                })
+                .catch((error) => {
+                    console.error(
+                        "There was a problem with the fetch operation:",
+                        error
+                    );
                 });
         }
     },
     initLike: (post_id) => {
-        var likelist = localStorage.getItem("lieklist") || ""
-        var likeButton = document.querySelector('.post_like')
-        var likeText = document.querySelector('.post_likes')
-        if (likelist.indexOf(post_id+',') != -1) {
-            likeButton.classList.add('active')
+        var likelist = localStorage.getItem("lieklist") || "";
+        var likeButton = document.querySelector(".post_like");
+        var likeText = document.querySelector(".post_likes");
+        if (likelist.indexOf(post_id + ",") != -1) {
+            likeButton.classList.add("active");
         }
-        fetch(`${apiUrl}/post/${post_id}/like`).then((res) => {return res.json()}).then((data) => {
-            if(data){
-                likeButton.dataset.like = data.likes
-                likeText.innerText = data.likes
-            }
-        })
+        fetch(`${apiUrl}/post/${post_id}/like`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                if (data.likes) {
+                    likeButton.dataset.like = data.likes;
+                    likeText.innerText = data.likes;
+                }else{
+                    likeButton.dataset.like = 0;
+                    likeText.innerText = 0; 
+                }
+            }).catch((error) => {
+                likeButton.dataset.like = 0;
+                likeText.innerText = 0;
+                console.error(
+                    "There was a problem with the fetch operation:",
+                    error
+                );
+            });
         return true;
-
     },
     initViews: (post_id) => {
-        var viewlist = localStorage.getItem("viewlist") || ""
-        var viewText = document.querySelector('.post_views')
+        var viewlist = localStorage.getItem("viewlist") || "";
+        var viewText = document.querySelector(".post_views");
 
-        if (viewlist.indexOf(post_id+',') != -1) {
-            fetch(`${apiUrl}/post/${post_id}/views`).then((res) => {return res.json()}).then((data) => {
-                if(data){
-                    viewText.innerText = data.Views
-                }
-            })
+        if (viewlist.indexOf(post_id + ",") != -1) {
+            fetch(`${apiUrl}/post/${post_id}/views`)
+                .then((res) => {
+                    return res.json();
+                })
+                .then((data) => {
+                    if (data.Views) {
+                        viewText.innerText = data.Views;
+                    }else{
+                        viewText.innerText = 0; 
+                    }
 
+                });
         } else {
             fetch(`${apiUrl}/post/${post_id}/views`, { method: "post" })
                 .then((res) => {
@@ -94,14 +120,19 @@ Alpine.data("post_action", () => ({
                 })
                 .then((data) => {
                     console.log("浏览量" + JSON.stringify(data));
-                    localStorage.setItem("viewlist", viewlist + post_id +',')
-                    viewText.innerText = data.Views
-                }).catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
+                    localStorage.setItem("viewlist", viewlist + post_id + ",");
+                    viewText.innerText = data.Views;
+                })
+                .catch((error) => {
+                    viewText.innerText = 0;
+                    console.error(
+                        "There was a problem with the fetch operation:",
+                        error
+                    );
                 });
         }
 
-        return true
+        return true;
     },
 }));
 
