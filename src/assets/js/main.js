@@ -11,8 +11,8 @@ import initWebSocket from "./actives.js";
 
 import { getMemos, parseMemos } from "./memos.js";
 
-// var apiUrl = "https://api.1900.live";
-var apiUrl = "http://localhost:3000";
+var apiUrl = "https://api.1900.live";
+// var apiUrl = "http://localhost:3000";
 
 
 window.Alpine = Alpine;
