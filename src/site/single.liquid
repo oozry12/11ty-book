@@ -37,12 +37,8 @@ permalink: /{{ post.slug }}/
 {% endblock %}
 
 
-{% assign has_tag = post.tags | where:'name','#post-toc' | first %}
-
-
 {% block toc %}
 {% include 'partials/toc',html:post.html %}
-
 {% endblock %}
 
 

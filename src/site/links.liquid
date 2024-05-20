@@ -1,6 +1,13 @@
 ---
   permalink: /links/index.html
 ---
+{% for doc in collections.docs-all %}
+{% if doc.slug == 'links' %}
+{% assign page = doc %}
+{% break %}
+{% endif %}
+{% endfor %}
+
 {% layout "layouts/base" %}
 
 
@@ -14,14 +21,6 @@
   <h1 class="book-title">
     我关注的博主们
   </h1>
-
-  {% for doc in collections.docs-all %}
-    {% if doc.slug == 'links' %}
-      {% assign page = doc %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-
 
   {% include  "partials/post-meta",img:false,post:page %}
 

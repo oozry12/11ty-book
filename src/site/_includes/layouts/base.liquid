@@ -1,13 +1,25 @@
+{% if post %}
+  {% assign type = 'post' %}
+  {% assign has_toc = post.tags | where:'name','#post-toc' | first %}
+  {% assign has_full_width = post.tags | where:'name','#post-toc' | first %}
+{% endif %}
+
+
+{% if page %}
+  {% assign type = 'page' %}
+  {% assign has_toc = page.tags | where:'name','#page-fullwidth' | first %}
+  {% assign has_full_width = page.tags | where:'name','#page-fullwidth' | first %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="{{ site.lang }}" dir="ltr">
 <head>
-        {% block head %}{% include 'partials/head' %}{% endblock %}
+{% block head %}{% include 'partials/head' %}{% endblock %}
   {% comment %} {{ partial "docs/inject/head" . }} {% endcomment %}
 </head>
 <body dir="ltr">
   <input aria-label="menu-control" type="checkbox" class="hidden toggle" id="menu-control" />
   <input aria-label="toc-control" type="checkbox" class="hidden toggle" id="toc-control" />
-  {% assign has_tag = post.tags | where:'name','#post-toc' | first %}
 
   <main class="container flex">
     <aside class="book-menu">
@@ -46,8 +58,7 @@
     </div>
 
     {% comment %} {{ if default true (default .Site.Params.BookToC .Params.BookToC) }} {% endcomment %}
-    {% unless  page.url contains '/douban/' %}
-    <aside class="book-toc ">
+    <aside class="book-toc {% if has_full_width  %} full-width {% endif %}">
       <div class="book-toc-content">
         {% block toc %}{% endblock %}
         <div class="book-toc-top">
@@ -56,7 +67,6 @@
         {% comment %} {{ template "toc" . }} <!-- Table of Contents --> {% endcomment %}
       </div>
     </aside>
-    {%  endunless %}
     {% comment %} {{ end }} {% endcomment %}
   </main>
 

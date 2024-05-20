@@ -1,12 +1,19 @@
 ---
   permalink: /memos/index.html
 ---
+{% for doc in collections.docs-all %}
+{% if doc.slug == 'memos' %}
+{% assign page = doc %}
+{% break %}
+{% endif %}
+{% endfor %}
+    
 {% layout "layouts/base" %}
 
 
-{% block head %}{% include 'partials/head',title:post.title %}{% endblock %}
+{% block head %}{% include 'partials/head',title:page.title %}{% endblock %}
 
-{% block header %}{% include 'partials/header',title:post.title %}{% endblock %}
+{% block header %}{% include 'partials/header',title:page.title %}{% endblock %}
 
 
 {% block content %}

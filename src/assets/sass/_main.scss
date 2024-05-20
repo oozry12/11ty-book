@@ -81,14 +81,16 @@ ul.pagination {
 .container {
     max-width: $container-max-width;
     margin: 0 auto;
+    position: relative;
 }
 
 .book-icon {
     fill: var(--body-font-color);
     color: var(--body-font-color);
     height: 1em;
+    margin-inline-end: .5em;
     width: 1em;
-    margin-inline-end: 0.5em;
+    stroke: var(--body-background);
 }
 
 .book-brand {
@@ -318,6 +320,11 @@ body[dir="rtl"] .book-menu {
 .book-toc {
     flex: 0 0 $toc-width;
     font-size: $font-size-12;
+
+    &.full-width{
+        position: absolute;
+        right: 0px;
+    }
 
     .book-toc-content {
         width: $toc-width;

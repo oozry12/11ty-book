@@ -1,8 +1,14 @@
 ---
 permalink: /douban/index.html
 ---
-{% layout "layouts/base" %}
+{% for doc in collections.docs-all %}
+{% if doc.slug == 'douban' %}
+{% assign page = doc %}
+{% break %}
+{% endif %}
+{% endfor %}
 
+{% layout "layouts/base" %}
 
 {% block head %}{% include 'partials/head',title:post.title %}{% endblock %}
 
@@ -10,20 +16,11 @@ permalink: /douban/index.html
 
 
 {% block content %}
-{% for doc in collections.docs-all %}
-{% if doc.slug == 'douban' %}
-{% assign page = doc %}
-{% break %}
-{% endif %}
-{% endfor %}
+
 <article class="markdown book-article">
   <h1 class="book-title">
     {{ page.title }}
   </h1>
-
-
-
-
 
   {{ page.html }}
 
@@ -103,15 +100,14 @@ permalink: /douban/index.html
   {% endblock %} {% endcomment %}
 
 
-
   {% block toc %}
-  {% comment %} {% include 'partials/toc-tagloop' %} {% endcomment %}
-  {% endblock %}
+  {% include 'partials/toc',html:page.html %}
 
+  {% endblock %}
+  
+  
   {% block h-toc %}
-  {% comment %}
   <aside class="hidden clearfix">
-    {% include 'partials/toc-tagloop' %}
+  {% include 'partials/toc',html:page.html %}
   </aside>
-  {% endcomment %}
   {% endblock %}

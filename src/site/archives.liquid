@@ -1,26 +1,24 @@
 ---
 permalink: /archives/
 ---
+{% for doc in collections.docs-all %}
+{% if doc.slug == 'archives' %}
+{% assign page = doc %}
+{% break %}
+{% endif %}
+{% endfor %}
+
 {% layout "layouts/base" %}
 
-{% block header %}{% include 'partials/header',title: "归档" %}{% endblock %}
+{% block header %}{% include 'partials/header',title: page.title %}{% endblock %}
 
 {% block content %}
 
 <div class="markdown book-article">
     <h1 class="book-title">
-        归档</h1>
+        {{page.title}}</h1>
 
-    {% for doc in collections.docs-all %}
-        {% if doc.slug == 'archives' %}
-          {% assign page = doc %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-
-
-
-    <div>
+       <div>
         {% assign groupdata = collections.posts | groupbydate %}
         {% for post in groupdata %}
                 <h2>{{post.year}}</h2>
