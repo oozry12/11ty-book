@@ -4,12 +4,13 @@
     <ul>
       <li class="book-section-flat">
         {% assign toc = html | tocGen %}
+
         {% if toc %}
-          <strong>TOC
-            </strong>
+          <strong>TOC</strong>
           {{toc}}
         {% endif %}
-        {% if type == 'post' %}
+
+        {% if type  %}
         <strong><a href="#join-comments">加入评论</a></strong>
         {% endif %}
     </ul>

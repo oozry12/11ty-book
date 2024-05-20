@@ -17,8 +17,6 @@ permalink: /{{ page.slug }}/
     <h1 class="book-title">
      {{ page.title }}
     </h1>
-    
-
     {{ page.html }}
   </article>
 {% endblock %}
@@ -28,6 +26,10 @@ permalink: /{{ page.slug }}/
 {% include 'partials/footer' %}
 {% endblock %}
 
+
+{% block comments %}
+{% include 'partials/comment' %}
+{% endblock %}
 
 
 
