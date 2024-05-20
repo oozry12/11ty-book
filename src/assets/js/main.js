@@ -58,7 +58,7 @@ Alpine.data("post_action", () => ({
                     return res.json();
                 })
                 .then((data) => {
-                    console.log("点赞成功" + JSON.stringify(data));
+                    cocoMessage.success( "点赞成功，谢谢你的 ❤️");
                     localStorage.setItem("lieklist", likelist + post_id + ",");
                     likeButton.classList.add("active");
                     likeText.innerText = data.likes
@@ -123,7 +123,6 @@ Alpine.data("post_action", () => ({
                     return res.json();
                 })
                 .then((data) => {
-                    console.log("浏览量" + JSON.stringify(data));
                     localStorage.setItem("viewlist", viewlist + post_id + ",");
                     viewText.innerText = data.Views;
                 })
