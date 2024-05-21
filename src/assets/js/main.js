@@ -9,15 +9,16 @@ import initMap from "./map.js";
 import tippy from "tippy.js";
 import initWebSocket from "./actives.js";
 import cocoMessage from "./coco-message.js";
+import quicklink from "quicklink/dist/quicklink.umd";
 
 import { getMemos, parseMemos } from "./memos.js";
 
 var apiUrl = "https://api.1900.live";
 // var apiUrl = "http://localhost:3000";
 
-cocoMessage.config({
-
-})
+window.addEventListener("load", () => {
+    quicklink.listen();
+});
 
 window.Alpine = Alpine;
 Alpine.data("theme", () => ({
