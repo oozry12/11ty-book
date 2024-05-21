@@ -191,8 +191,8 @@ Alpine.data("douban", () => ({
 }));
 
 Alpine.start();
-//init kg-gallery-image
 
+//init kg-gallery-image
 var gallery = document.querySelectorAll(".kg-gallery-image img");
 gallery.forEach(function (e) {
     var l = e.closest(".kg-gallery-image"),
@@ -204,11 +204,6 @@ function initZoom() {
     mediumZoom(".markdown img", {
         background: "rgba(0,0,0,0.75)",
     });
-    // this.$nextTick(() => {
-    //     mediumZoom(".markdown img", {
-    //         background: "rgba(0,0,0,0.75)",
-    //     });
-    // });
     return;
 }
 
@@ -252,6 +247,9 @@ if (
         });
         changeTheme(localStorage.theme, localStorage.name);
     });
+    artalk.on("comment-inserted",function(){
+        cocoMessage.success('感谢你发表的想法 💖')
+    })
 }
 
 function changeTheme(theme, name) {
