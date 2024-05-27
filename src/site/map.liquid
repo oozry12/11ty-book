@@ -1,6 +1,13 @@
 ---
 permalink: /map/index.html
 ---
+{% for doc in collections.docs-all %}
+{% if doc.slug == 'map' %}
+{% assign page = doc %}
+{% break %}
+{% endif %}
+{% endfor %}
+
 {% layout "layouts/base" %}
 
 
@@ -10,19 +17,12 @@ permalink: /map/index.html
 
 
 {% block content %}
-{% for doc in collections.docs-all %}
-{% if doc.slug == 'map' %}
-{% assign page = doc %}
-{% break %}
-{% endif %}
-{% endfor %}
 <article class="markdown book-article">
   <h1 class="book-title">
-    足迹
+    {{ page.title }}
   </h1>
 
   {{ page.html }}
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.36.0/mapbox-gl.css' rel='stylesheet' />
   <div id="map" class="footer-map"></div>
 </article>
 {% endblock %}
