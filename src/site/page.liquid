@@ -19,13 +19,14 @@ permalink: /{{ page.slug }}/
     </h1>
     {{ page.html }}
   </article>
+  {% include "partials/post-action",post:page %}
+
 {% endblock %}
 
 
 {% block footer %}
-{% include 'partials/footer' %}
+{% include 'partials/footer',post:page %}
 {% endblock %}
-
 
 {% block comments %}
 {% include 'partials/comment' %}

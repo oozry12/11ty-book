@@ -3,10 +3,12 @@ import "../sass/book.scss";
 import Alpine from "alpinejs";
 import mediumZoom from "medium-zoom";
 import search from "./search";
-import Artalk from "./ArtalkLite";
+import Artalk from "artalk/dist/ArtalkLite.js";
 import { initCopyButton } from "./code.js";
 import initMap from "./map.js";
 import tippy from "tippy.js";
+
+
 import initWebSocket from "./actives.js";
 import cocoMessage from "./coco-message.js";
 import quicklink from "quicklink/dist/quicklink.umd";
@@ -49,6 +51,7 @@ Alpine.data("post_action", () => ({
         var likelist = localStorage.getItem("lieklist") || "";
         var likeButton = document.querySelector(".post_like");
         var likeText = document.querySelector(".post_likes");
+        var mail = JSON.parse(localStorage.getItem('ArtalkUser')) != null ? JSON.parse(localStorage.getItem('ArtalkUser')).mail:""
 
         if (likelist.indexOf(post_id + ",") != -1) {
             cocoMessage.success( "你已经点过赞了 ❤️");

@@ -13,12 +13,9 @@
 // Custom defined styles
 @import "custom";
 @import "plugins/ghost";
-@import "plugins/ArtalkLite.css";
 @import "plugins/highlightjs-copy";
 @import "plugins/douban.css";
 @import "plugins/hint.min.css";
-@import "plugins/map";
-@import "plugins/tippy.css";
-
-
+@import "tippy.js/dist/tippy.css";
+@import "artalk/dist/ArtalkLite.css";
 

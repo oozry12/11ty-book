@@ -1,4 +1,5 @@
 import commonjs from "@rollup/plugin-commonjs";
+import css from 'rollup-plugin-import-css';
 import nodeResolve from "@rollup/plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
 import babel from "@rollup/plugin-babel";
@@ -27,15 +28,11 @@ export default {
             extensions: ["css", "scss"],
             plugins: [
                 atImport(),
-                postcssPresetEnv({
-                    features: {
-                        "custom-properties": false,
-                        "logical-properties-and-values": false,
-                    },
-                }),
+                postcssPresetEnv(),
             ],
             minimize: true,
         }),
+        css(),
         copy({
             targets: [
                 { src: "src/assets/fonts", dest: "dist/assets/" },

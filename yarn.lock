@@ -1516,6 +1516,18 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@mapbox-controls/helpers@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@mapbox-controls/helpers/-/helpers-1.1.0.tgz#12c23a89f8ff116f9e5cb0159238a863c5887a5b"
+  integrity sha512-Pos60fsO82YEuW2NzELOi8gTRIPYObHRpzAM+pObbl2/eVn4NmPNID1PyIjL6ANwOBfUPe8niDDl/Dd0/OTTIg==
+
+"@mapbox-controls/zoom@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@mapbox-controls/zoom/-/zoom-1.2.0.tgz#4b6c8f9359f934420991ae460e72ad7fb9bfa4fa"
+  integrity sha512-9eN8f7cHoi66bmlNuqs0A+i+ZohbQwQbA2dKkzRoVioS1VTunSY9YtDUYXm+/PVmIBUCjeLNu154s3uqAGnNAw==
+  dependencies:
+    "@mapbox-controls/helpers" "1.1.0"
+
 "@mapbox/extent@0.4.0":
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@mapbox/extent/-/extent-0.4.0.tgz#3e591f32e1f0c3981c864239f7b0ac06e610f8a9"
@@ -1795,7 +1807,7 @@
     smob "^1.0.0"
     terser "^5.17.4"
 
-"@rollup/pluginutils@^5.0.1":
+"@rollup/pluginutils@^5.0.1", "@rollup/pluginutils@^5.0.4":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-5.1.0.tgz#7e53eddc8c7f483a4ad0b94afb1f7f5fd3c771e0"
   integrity sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==
@@ -6880,6 +6892,13 @@ rollup-plugin-delete@^2.0.0:
   integrity sha512-/VpLMtDy+8wwRlDANuYmDa9ss/knGsAgrDhM+tEwB1npHwNu4DYNmDfUL55csse/GHs9Q+SMT/rw9uiaZ3pnzA==
   dependencies:
     del "^5.1.0"
+
+rollup-plugin-import-css@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-import-css/-/rollup-plugin-import-css-3.5.0.tgz#b3ea3f709e89023230be1e752fee905a0c7ee284"
+  integrity sha512-JOVow6n00qt2C/NnsqPmIjFOfxIAudwWqC5SaC84CodMGiMFaP1gPAdgnJ8g8hcG+P85TCYp2kI98grYCEt5pg==
+  dependencies:
+    "@rollup/pluginutils" "^5.0.4"
 
 rollup-plugin-livereload@^2.0.5:
   version "2.0.5"

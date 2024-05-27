@@ -45,6 +45,37 @@ function _defineProperties(t, e) {
     }
 }
 
+class HelloWorldControl {
+    constructor(args) {
+        this.args = args;
+    }
+
+    onAdd(button) {
+        this._btn = document.createElement("button");
+        this._btn.className =
+            "mapboxgl-ctrl-icon " + args.className;
+        this._btn.type = "button";
+        this._btn.title = args.title;
+        this._btn.onclick = function () {
+            button.flyTo({ center: [108.14, 33.87], zoom: 3 });
+        },
+        this._container = document.createElement("div")
+        this._container.className =
+            "mapboxgl-ctrl-group mapboxgl-ctrl"
+        this._container.appendChild(this._btn)
+        this._container
+        
+        return this._container;
+    }
+
+    
+
+    onRemove() {
+        this._container.parentNode.removeChild(this._container);
+        this._map = undefined;
+    }
+}
+
 function w() {
     return (
         _createClass(o, [
@@ -93,7 +124,7 @@ function _create() {
         maxZoom: 24,
         zoom: 3,
     });
-    es = new w({
+    es = new HelloWorldControl({
         className: "mapbox-gl-draw_polygon",
         title: "返回",
     });
