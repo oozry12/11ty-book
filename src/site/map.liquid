@@ -25,6 +25,7 @@ permalink: /map/index.html
   {{ page.html }}
   <div id="map" class="footer-map"></div>
 </article>
+{% include "partials/post-action",post:page %}
 {% endblock %}
 
 
@@ -32,10 +33,9 @@ permalink: /map/index.html
 {% include 'partials/footer',post:post %}
 {% endblock %}
 
-{% comment %} {% block comments %}
+{% block comments %}
 {% include 'partials/comment' %}
-{% endblock %} {% endcomment %}
-
+{% endblock %}
 
 
 {% block toc %}
