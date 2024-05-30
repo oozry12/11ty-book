@@ -3,6 +3,9 @@ import MapboxLanguage from "@mapbox/mapbox-gl-language";
 import Supercluster from "supercluster";
 import geojsonExtent from "@mapbox/geojson-extent/geojson-extent";
 import tippy from "tippy.js";
+import search from "./search";
+
+
 
 // 定义 ControlButton 类
 class ControlButton {
@@ -224,7 +227,7 @@ class CustomMap {
 export default function initMap() {
     if (null != document.querySelector("#map")) {
         fetch(
-            "/assets/geojson.json"
+            "https://ghproxy.net/https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/geojson.geojson?short_path=832ba66"
         ).then(function (t) {
             return t.json().then(function (t) {
                 new CustomMap({ data: t });
