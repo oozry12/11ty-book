@@ -227,7 +227,7 @@ class CustomMap {
 export default function initMap() {
     if (null != document.querySelector("#map")) {
         fetch(
-            "https://ghproxy.net/https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/geojson.geojson?short_path=832ba66"
+            "https://ghproxy.net/https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/geojson.json?short_path=832ba66"
         ).then(function (t) {
             return t.json().then(function (t) {
                 new CustomMap({ data: t });
