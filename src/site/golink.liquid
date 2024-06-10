@@ -1,0 +1,87 @@
+---
+permalink: golink/
+---
+{% layout "layouts/base" %}
+
+{% block header %}{% include 'partials/header',title:site.title %}{% endblock %}
+
+{% block content %}
+
+
+<style>
+  .go-lilnk {
+    text-align: center;
+    min-height: 70vh; 
+  }
+
+  .go-lilnk h1 {
+    margin: 5rem 0 0 0 ;
+    opacity: .25;
+    font-size: 25vmin;
+  }
+
+  .go-lilnk h1 svg {
+    margin-right: 0;
+    opacity: .25;
+  }
+
+  .go-lilnk blockquote{
+    word-break: break-all;
+  }
+</style>
+
+<main class="flex justify-center align-center go-lilnk">
+  <div class="markdown">
+    <h2>即将离开 {{ site.title }} 前往</h2>
+    <blockquote class="book-hint warning">
+      <a  id="redirect-link"  target="_blank" href=""></a>
+    </blockquote>
+    <div class="btn-more flex flex-wrap justify-center">
+      <a id="direct-link" href="" class="book-btn">
+      点击跳转
+      </a>
+    </div>
+  </div>
+</main>
+
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const encodedTarget = params.get('target');
+    const target = atob(encodedTarget); // 使用 atob 进行 Base64 解码
+
+    if (target) { 
+
+        const decodedTarget = decodeURIComponent(target);
+
+        document.getElementById('direct-link').href = decodedTarget;
+        document.getElementById('redirect-link').textContent = '' + decodedTarget; // 在新增的元素中显示原地址
+        document.getElementById('redirect-link').href = decodedTarget;
+
+    } else {
+        const redirectMessageElement = document.getElementById('redirect-link');
+        redirectMessageElement.textContent = '';
+    }
+</script>
+
+
+{% endblock %}
+
+{% block pagination %}{% endblock %}
+
+
+{% block toc %}
+
+{% include 'partials/relitu' %}
+
+{% include 'partials/toc-tagloop' %}
+
+{% endblock %}
+
+{% block h-toc %}
+<aside class="hidden clearfix">
+
+{% include 'partials/toc-tagloop' %}
+
+</aside>
+{% endblock %}

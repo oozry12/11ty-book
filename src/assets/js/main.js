@@ -253,6 +253,22 @@ if (
     artalk.on("comment-inserted",function(){
         cocoMessage.success('感谢你发表的想法 💖')
     })
+
+    artalk.on("list-fetched",function(){
+        //定义白名单
+        const whtieList = [
+            'www.1900.live',
+            '1900.live',
+            'localhost:8080',
+            'neodb.social'
+        ]
+        
+        document.querySelectorAll('.atk-list-body a').forEach(function(link) {
+            if(!whtieList.includes(link.host)){
+                link.href = `/golink/?target=${window.btoa(link)}`
+            }
+        })
+    })
 }
 
 function changeTheme(theme, name) {

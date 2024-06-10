@@ -6,6 +6,7 @@ const { JSDOM } = require("jsdom");
 const imageSrcset = require("./../shortcodes/imageSrcset");
 const pangu = require("pangu/src/browser/pangu");
 const hljs = require("highlight.js");
+const golink = require("./../shortcodes/golink")
 
 module.exports = (content, outputPath) => {
   if (outputPath.endsWith(".html")) {
@@ -15,6 +16,15 @@ module.exports = (content, outputPath) => {
     global.DocumentFragment = DocumentFragment;
     global.XPathResult = XPathResult;
     global.document = document;
+
+
+    const links = document.querySelectorAll(".book-article a")
+
+    if(links){
+      links.forEach(function(link){
+        link.href = golink(link.href);
+      })
+    }
 
     // // Add lazyload to all article images
     const articleImages = [
