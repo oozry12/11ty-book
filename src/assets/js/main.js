@@ -35,8 +35,8 @@ Alpine.data("memos", () => ({
     limit: 0,
     offset: 0,
     url: "",
-    getMemoss: function () {
-        this.data = getMemos(this.url, this.limit, this.offset);
+    getMemoss:async function () {
+        this.data = await getMemos(this.url, this.limit, this.offset);
     },
     loadmore: function () {
         this.offset = this.offset + this.offset;
@@ -44,6 +44,7 @@ Alpine.data("memos", () => ({
         this.getMemoss();
     },
     initZoom: initZoom,
+    golink:golink
 }));
 Alpine.data("post_action", () => ({
     apiUrl: apiUrl,
@@ -222,6 +223,22 @@ if (navigator.serviceWorker) {
     });
 }
 
+function golink(selector){
+        //定义白名单
+        const whtieList = [
+            'www.1900.live',
+            '1900.live',
+            'localhost:8080',
+            'neodb.social'
+        ]
+        
+        document.querySelectorAll(selector).forEach(function(link) {
+            if(!whtieList.includes(link.host)){
+                link.href = `/golink/?target=${window.btoa(link)}`
+            }
+        })
+}
+
 if (
     commentinfo.type == "artalk" &&
     document.getElementById("comments") != null
@@ -255,19 +272,7 @@ if (
     })
 
     artalk.on("list-fetched",function(){
-        //定义白名单
-        const whtieList = [
-            'www.1900.live',
-            '1900.live',
-            'localhost:8080',
-            'neodb.social'
-        ]
-        
-        document.querySelectorAll('.atk-list-body a').forEach(function(link) {
-            if(!whtieList.includes(link.host)){
-                link.href = `/golink/?target=${window.btoa(link)}`
-            }
-        })
+        golink('.atk-list-body a')
     })
 }
 

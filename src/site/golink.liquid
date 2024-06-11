@@ -3,31 +3,15 @@ permalink: golink/
 ---
 {% layout "layouts/base" %}
 
-{% block header %}{% include 'partials/header',title:site.title %}{% endblock %}
+{% block menu %}{% endblock %}
+
+{% block header %}{% endblock %}
 
 {% block content %}
 
 
 <style>
-  .go-lilnk {
-    text-align: center;
-    min-height: 70vh; 
-  }
 
-  .go-lilnk h1 {
-    margin: 5rem 0 0 0 ;
-    opacity: .25;
-    font-size: 25vmin;
-  }
-
-  .go-lilnk h1 svg {
-    margin-right: 0;
-    opacity: .25;
-  }
-
-  .go-lilnk blockquote{
-    word-break: break-all;
-  }
 </style>
 
 <main class="flex justify-center align-center go-lilnk">
@@ -36,8 +20,11 @@ permalink: golink/
     <blockquote class="book-hint warning">
       <a  id="redirect-link"  target="_blank" href=""></a>
     </blockquote>
-    <div class="btn-more flex flex-wrap justify-center">
-      <a id="direct-link" href="" class="book-btn">
+    <div class="btn-action flex flex-wrap justify-center">
+      <a href="javascript:window.history.back()" class="book-btn info">
+      返回博客
+      </a>
+      <a id="direct-link" href="" class="book-btn warning">
       点击跳转
       </a>
     </div>
@@ -71,17 +58,7 @@ permalink: golink/
 
 
 {% block toc %}
-
-{% include 'partials/relitu' %}
-
-{% include 'partials/toc-tagloop' %}
-
 {% endblock %}
 
 {% block h-toc %}
-<aside class="hidden clearfix">
-
-{% include 'partials/toc-tagloop' %}
-
-</aside>
 {% endblock %}

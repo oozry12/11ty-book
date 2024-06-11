@@ -18,7 +18,7 @@ module.exports = (content, outputPath) => {
     global.document = document;
 
 
-    const links = document.querySelectorAll(".book-article a")
+    const links = document.querySelectorAll(".book-article a:not(.book-btn)");
 
     if(links){
       links.forEach(function(link){

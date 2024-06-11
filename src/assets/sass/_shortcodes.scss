@@ -86,9 +86,21 @@
     border: $padding-1 solid var(--color-link);
     border-radius: $border-radius;
     cursor: pointer;
+    transition: 0.5s;
 
     &:hover {
       text-decoration: none;
+      background-color: var(--gray-200);
+    }
+
+    &.info{
+      border-color: var(--hint-color-info);
+    }
+    &.warning{
+      border-color: var(--hint-color-warning);
+    }
+    &.danger{
+      border-color: var(--hint-color-danger);
     }
   }
 
