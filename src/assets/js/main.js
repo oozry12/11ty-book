@@ -234,7 +234,8 @@ function golink(selector){
         
         document.querySelectorAll(selector).forEach(function(link) {
             if(!whtieList.includes(link.host)){
-                link.href = `/golink/?target=${window.btoa(link)}`
+                link.href = `/golink/?target=${window.btoa(link)}`;
+                link.target = '_self'
             }
         })
 }

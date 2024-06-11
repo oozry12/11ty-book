@@ -108,6 +108,8 @@
         color: var(--gray-700);
         font-style: italic;
 
+        word-break: break-all;
+
         :first-child {
             margin-top: 0;
         }
