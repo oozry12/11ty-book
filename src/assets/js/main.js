@@ -292,6 +292,7 @@ function changeTheme(theme, name) {
     }
     localStorage.theme = theme;
     localStorage.name = name;
+    document.getElementById('theme').checked = false
 }
 
 // // 隐藏所有非当前类型的元素
