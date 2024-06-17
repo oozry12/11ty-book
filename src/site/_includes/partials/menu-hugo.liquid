@@ -12,7 +12,7 @@
   <ul>
   {% for item in site.navigation %}
   <li>
-    <a {% if item.url == page.url %}class="current"{% endif %} href="{{ item.url | absoluteUrl }}" >
+    <a {% if item.url  contains page.slug %}class="current"{% endif %} href="{{ item.url | absoluteUrl }}" >
       {{ item.label }}
     </a>
   </li>

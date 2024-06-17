@@ -23,6 +23,7 @@ module.exports = (content, outputPath) => {
     if(links){
       links.forEach(function(link){
         link.href = golink(link.href);
+        link.target = "_blank";
       })
     }
 
