@@ -88,6 +88,10 @@ module.exports = {
             desc: "她的蓝",
         },
         {
+            name: "onojyun",
+            desc: "莫比乌斯",
+        },
+        {
             name: "auto",
             desc: "自适应",
         },

@@ -1,6 +1,7 @@
 // mixin code style
 @import "../plugins/dracula.min";
 @import "../plugins/lightcode";
+@import url('https://google-fonts.mirrors.sjtug.sjtu.edu.cn/css2?family=Noto+Serif+SC:wght@200..900&display=swap');
 
 :root {
   @include theme-light;
@@ -33,4 +34,9 @@ html.yuhang{
 
 html.herblue{
   @include theme-herblue;
+}
+
+html.onojyun{
+  @include theme-onojyun;
+
 }
