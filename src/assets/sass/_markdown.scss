@@ -53,14 +53,16 @@
     }
 
     a {
-        text-decoration: none;
+        color:  var(--color-link);
+        text-underline-offset: 0.3em;
+        text-decoration: underline;
 
         &:hover {
-            text-decoration: underline;
             color: var(--color-hover-link);
+            text-shadow: 0 0 0.75px var(--color-hover-link);
         }
         &:visited {
-            color: var(--color-visited-link);
+            color:  var(--color-link);
         }
     }
 

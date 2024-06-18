@@ -185,9 +185,14 @@ ul.pagination {
 
     a,
     label {
-        color: inherit;
         cursor: pointer;
         word-wrap: break-word;
+        color: inherit;
+
+        &:hover{
+            color: var(--color-hover-link);
+            text-shadow: 0 0 0.75px var(--color-hover-link);
+        }
     }
 
     a.active {

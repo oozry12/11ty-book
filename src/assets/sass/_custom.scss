@@ -125,8 +125,14 @@
 
 .book-title {
     view-transition-name: book-title;
-    a:hover{
-        color: var(--color-hover-link);
+    
+    a{
+        text-decoration: auto;
+
+        &:hover {
+            color: var(--color-hover-link);
+            text-shadow: 0 0 0.75px var(--color-hover-link);
+        }
     }
 }
 
