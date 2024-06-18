@@ -34,6 +34,10 @@ h5 {
 a {
     text-decoration: none;
     color: var(--color-link);
+
+    &:hover{
+        color: var(--color-hover-link)
+    }
 }
 
 img {
@@ -53,15 +57,7 @@ aside nav ul {
         margin: 1em 0;
         position: relative;
     }
-
-    a {
-        display: block;
-    }
-
-    a:hover {
-        opacity: 0.5;
-    }
-
+    
     ul {
         padding-inline-start: $padding-16;
     }
