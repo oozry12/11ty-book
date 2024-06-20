@@ -2,10 +2,15 @@
     scrollbar-gutter: stable;
 }
 
+
 html {
     font-size: $font-size-base;
     scroll-behavior: smooth;
     touch-action: manipulation;
+
+    * {
+        text-shadow: 0 0 0.75px var(--gray-500);
+    }
 }
 
 body {

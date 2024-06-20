@@ -125,8 +125,8 @@
 
 .book-title {
     view-transition-name: book-title;
-    
-    a{
+
+    a {
         text-decoration: auto;
 
         &:hover {
@@ -1523,10 +1523,29 @@ h3#join-comments {
     }
 }
 
-
-
 ::selection {
     background-color: var(--gray-500);
     color: var(--body-font-color);
-    text-shadow: 0 0 .75px var(--color-link);
+    text-shadow: 0 0 0.75px var(--color-link);
+}
+
+.tippy-box[data-theme~="auto"][data-placement^="top"] > .tippy-arrow::before {
+    border-top-color: var(--body-background);
+}
+.tippy-box[data-theme~="auto"][data-placement^="bottom"]
+    > .tippy-arrow::before {
+    border-bottom-color: var(--body-background);
+}
+.tippy-box[data-theme~="auto"][data-placement^="left"] > .tippy-arrow::before {
+    border-left-color: var(--body-background);
+}
+.tippy-box[data-theme~="auto"][data-placement^="right"] > .tippy-arrow::before {
+    border-right-color: var(--body-background);
+}
+
+.tippy-box {
+    background-color: var(--body-background);
+    color: var(--body-font-color);
+    box-shadow: 0 0 0.1rem var(--gray-100);
+    border: solid 1px var(--gray-200);
 }
