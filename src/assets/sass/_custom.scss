@@ -1529,17 +1529,17 @@ h3#join-comments {
     text-shadow: 0 0 0.75px var(--color-link);
 }
 
-.tippy-box[data-theme~="auto"][data-placement^="top"] > .tippy-arrow::before {
+.tippy-box[data-placement^="top"] > .tippy-arrow::before {
     border-top-color: var(--body-background);
 }
-.tippy-box[data-theme~="auto"][data-placement^="bottom"]
+.tippy-box[data-placement^="bottom"]
     > .tippy-arrow::before {
     border-bottom-color: var(--body-background);
 }
-.tippy-box[data-theme~="auto"][data-placement^="left"] > .tippy-arrow::before {
+.tippy-box[data-placement^="left"] > .tippy-arrow::before {
     border-left-color: var(--body-background);
 }
-.tippy-box[data-theme~="auto"][data-placement^="right"] > .tippy-arrow::before {
+.tippy-box[data-placement^="right"] > .tippy-arrow::before {
     border-right-color: var(--body-background);
 }
 

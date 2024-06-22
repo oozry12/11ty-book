@@ -260,12 +260,13 @@ if (
                 // 获取最近的atk-main父元素
                 var mainElement = badge.closest(".atk-main");
                 // 检查是否找到了atk-main元素
-                if (mainElement) {
+                if (mainElement) { 
                     // 获取atk-main元素的父元素，并为其添加atk-admin类
                     mainElement.parentNode.classList.add("atk-admin");
                 }
             }
         });
+
         changeTheme(localStorage.theme, localStorage.name);
     });
     artalk.on("comment-inserted",function(){
