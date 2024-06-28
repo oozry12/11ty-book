@@ -1,0 +1,83 @@
+---
+permalink: rss.xsl
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:atom="http://www.w3.org/2005/Atom">
+    <xsl:output method="html" encoding="UTF-8" indent="yes" />
+
+    <xsl:template match="/">
+        <html>
+
+        <head>
+            <title><xsl:value-of select="atom:feed/atom:title" /></title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .container {
+                    width: 800px;
+                    margin: 20px auto;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                }
+
+                .entry {
+                    border-bottom: 1px solid #ddd;
+                    margin-bottom: 20px;
+                    padding-bottom: 20px;
+                }
+
+                .entry:last-child {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+                }
+
+                .entry-title {
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin: 10px 0;
+                }
+
+                .entry-meta {
+                    font-size: 12px;
+                    color: #888;
+                }
+
+                .entry-content {
+                    font-size: 14px;
+                }
+            </style>
+        </head>
+
+        <body>
+            <div class="container">
+                <h1><xsl:value-of select="atom:feed/atom:title" /></h1>
+                <h2><xsl:value-of select="atom:feed/atom:subtitle" /></h2>
+
+                <xsl:for-each select="atom:feed/atom:entry">
+                    <div class="entry">
+                        <div class="entry-title">
+                            <a href="{atom:link/@href}" target="_blank"><xsl:value-of select="atom:title" /></a>
+                        </div>
+                        <div class="entry-meta">
+                            Published: <xsl:value-of select="atom:published" /> | Updated: <xsl:value-of
+                                select="atom:updated" />
+                        </div>
+                        <div class="entry-content">
+                            <xsl:value-of select="atom:content" disable-output-escaping="yes" />
+                        </div>
+                    </div>
+                </xsl:for-each>
+            </div>
+        </body>
+
+        </html>
+    </xsl:template>
+</xsl:stylesheet>

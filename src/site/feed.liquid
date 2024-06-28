@@ -2,11 +2,12 @@
 permalink: rss.xml
 ---
 <?xml version="1.0" encoding="utf-8"?>
+{% comment %} <?xml-stylesheet type="text/xsl" href="http://localhost:8080/rss.xsl"?> {% endcomment %}
+
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.title }}</title>
   <subtitle>{{ site.description }}</subtitle>
-  <link href="{{ '' | absoluteUrl }}" rel="self"/>
-  <link href="{{ '' | absoluteUrl }}"/>
+  <link href="{{ '' | absoluteUrl }}" rel="self" />
   {% if collections.posts %}
     <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
   {% endif %}
@@ -17,7 +18,7 @@ permalink: rss.xml
   {% for post in collections.posts limit:30 %}
       <entry>
         <title>{{ post.title }}</title>
-        <link href="{{ post.slug | articleUrl }}"/>
+        <link href="{{ post.slug | articleUrl }}" />
         <updated>{{ post.updated_at }}</updated>
         <published>{{ post.published_at }}</published>
 

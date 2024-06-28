@@ -7,6 +7,8 @@ const imageSrcset = require("./../shortcodes/imageSrcset");
 const pangu = require("pangu/src/browser/pangu");
 const hljs = require("highlight.js");
 const golink = require("./../shortcodes/golink")
+const aniEmoji = require("../shortcodes/aniEmoji")
+
 
 module.exports = (content, outputPath) => {
   if (outputPath.endsWith(".html")) {
@@ -16,6 +18,8 @@ module.exports = (content, outputPath) => {
     global.DocumentFragment = DocumentFragment;
     global.XPathResult = XPathResult;
     global.document = document;
+
+    aniEmoji(document.querySelectorAll(".markdown"));
 
 
     const links = document.querySelectorAll(".book-article a:not(.book-btn)");

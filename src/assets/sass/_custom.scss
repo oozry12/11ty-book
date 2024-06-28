@@ -1235,6 +1235,8 @@ pre:hover > .copy-button {
     .relitu-count {
         color: var(--gray-500);
     }
+
+
 }
 
 .footer-map {
@@ -1313,6 +1315,10 @@ pre:hover > .copy-button {
         font-size: 10px;
         height: 100%;
         width: 100%;
+    }
+
+    .current-item {
+        border: solid 1px var(--gray-500);
     }
 
     div:nth-child(9) > div:after {

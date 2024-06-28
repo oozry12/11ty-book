@@ -83,8 +83,9 @@ function fillGrid(data) {
                         `- <a href='${item.href}'>${item.title}</a></br>`
                 )
                 .join(" ");
+            const currentStyle = article.date == parseDate(today).toISOString().split("T")[0] ? "current-item":"";
             gridItem.innerHTML = `<div style="${ article.wordcount != 0 ? `background-color:rgba(77, 208, 90,${article.wordcount / 5000 + 0.2})`:""}" 
-            class="item-info ${ article.count != 0 ? `item-tippy" data-tippy-content="${article.date}，共 ${article.count} 篇，共 ${article.wordcount} 字<br />${tooltipStr}"`:'"' } data-date="${article.date}"></div>`;
+            class="item-info ${currentStyle} ${ article.count != 0 ? `item-tippy" data-tippy-content="${article.date}，共 ${article.count} 篇，共 ${article.wordcount} 字<br />${tooltipStr}"`:'"' } data-date="${article.date}"></div>`;
 
             const colIndex = Math.floor(index / 7);
             const rowIndex = index % 7;
