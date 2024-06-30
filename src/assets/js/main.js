@@ -8,6 +8,8 @@ import { initCopyButton } from "./code.js";
 import initMap from "./map.js";
 import tippy from "tippy.js";
 
+import "../js/cards.min.js"
+
 
 import initWebSocket from "./actives.js";
 import cocoMessage from "./coco-message.js";

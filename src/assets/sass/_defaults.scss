@@ -172,14 +172,14 @@ $hint-colors: (
     }
 
     .markdown {
-        a {
+        a:not(.kg-product-card-btn-accent,.book-btn,.kg-btn,.kg-header-card-button)  {
             text-decoration: underline;
         }
     }
 
     .book-title {
-        a {
-            text-decoration: none;
+        a{
+            text-decoration: none !important;
         }
     }
 
