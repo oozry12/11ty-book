@@ -1096,7 +1096,7 @@ p.kg-collection-card-post-excerpt {
     position: static;
     align-items: center;
     fill: #fff;
-    border: 1px solid var(--color-link);
+    border: 1px solid var(--gray-500);
     border-radius: 3px;
     outline: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -1559,7 +1559,7 @@ p.kg-collection-card-post-excerpt {
     padding: 20px;
     width: 100%;
     border-radius: 5px;
-    box-shadow: inset 0 0 0 1px rgb(124 139 154/25%);
+    box-shadow: inset 0 0 0 1px var(--gray-500);
 }
 
 .kg-product-card-image {
@@ -1665,7 +1665,7 @@ p.kg-collection-card-post-excerpt {
     width: 100%;
     height: 2.4em;
     border-radius: 5px;
-    border:1px solid var(--color-link);
+    border:1px solid var(--gray-500);
     padding: 0 1.2em;
     transition: opacity 0.2s ease-in-out;
 }
@@ -2008,7 +2008,7 @@ p.kg-collection-card-post-excerpt {
 
 .kg-toggle-card {
     background: 0 0;
-    box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    box-shadow: inset 0 0 0 1px var(--gray-500);
     border-radius: 4px;
     padding: 1.2em;
 }
@@ -2075,7 +2075,7 @@ p.kg-collection-card-post-excerpt {
 
 .kg-toggle-heading svg {
     width: 14px;
-    color: rgb(124 139 154 / 50%);
+    color: var(--gray-500);
     transition: all 0.3s;
     transform: rotate(-180deg);
 }
