@@ -50,4 +50,4 @@ jobs:
           echo "StrictHostKeyChecking no" >> ~/.ssh/config  
 
           # 使用 rsync 部署文件  
-          rsync -avz --delete -e "ssh -p $VPS_PORT" dist/ $VPS_USER@$VPS_HOST:/home/rebron1900/data/11ty-data  
+          rsync -avz --delete -e "ssh -p $VPS_PORT" dist/ $VPS_USER@$VPS_HOST:/var/11ty-data  
