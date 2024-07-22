@@ -28,6 +28,9 @@ jobs:
         with:
           cmd: prod # will run `yarn prod` command
 
+      - name: Install rsync  
+        run: sudo apt-get install -y rsync  
+
       - name: Deploy to VPS  
         env:  
           VPS_HOST: ${{ secrets.VPS_HOST }}  
