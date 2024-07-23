@@ -1881,6 +1881,13 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.13.0.tgz#6abd79db7ff8d01a58865ba20a63cfd23d9e2a10"
   integrity sha512-UKXUQNbO3DOhzLRwHSpa0HnhhCgNODvfoPWv2FCXme8N/ANFfhIPMGuOT+QuKd16+B5yxZ0HdpNlqPvTMS1qfw==
 
+"@shikijs/core@1.11.0":
+  version "1.11.0"
+  resolved "https://registry.npmmirror.com/@shikijs/core/-/core-1.11.0.tgz#a07a55037ba74f13b860698149bda03382b74cc1"
+  integrity sha512-VbEhDAhT/2ozO0TPr5/ZQBO/NWLqtk4ZiBf6NplYpF38mKjNfMMied5fNEfIfYfN+cdKvhDB4VMcKvG/g9c3zg==
+  dependencies:
+    "@types/hast" "^3.0.4"
+
 "@sidvind/better-ajv-errors@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@sidvind/better-ajv-errors/-/better-ajv-errors-1.1.1.tgz#310d4f38fb0bb631b464bebf036fa5b5ff50b400"
@@ -1954,6 +1961,13 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/hast@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.npmmirror.com/@types/hast/-/hast-3.0.4.tgz#1d6b39993b82cea6ad783945b0508c25903e15aa"
+  integrity sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ==
+  dependencies:
+    "@types/unist" "*"
+
 "@types/minimatch@*":
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-5.1.2.tgz#07508b45797cb81ec3f273011b054cd0755eddca"
@@ -1997,6 +2011,11 @@
   integrity sha512-ryQ0tidWkb1O1JuYvWKyMLYEtOWDqF5mHerJzKz/gQpoAaJq2l/dsMPBF0B5BNVT34rbARYJ5/tsZwLfUi2kwQ==
   dependencies:
     "@types/node" "*"
+
+"@types/unist@*":
+  version "3.0.2"
+  resolved "https://registry.npmmirror.com/@types/unist/-/unist-3.0.2.tgz#6dd61e43ef60b34086287f83683a5c1b2dc53d20"
+  integrity sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==
 
 "@vue/reactivity@~3.1.1":
   version "3.1.5"
@@ -5172,6 +5191,16 @@ markdown-it@^13.0.1:
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
 
+marked-highlight@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.npmmirror.com/marked-highlight/-/marked-highlight-2.1.3.tgz#a16db79d650b0bd8ae2898ac9a585646214562a0"
+  integrity sha512-t35JWm2u8HanOJ+gSJBAYQ0Jgr3vy+gl7ORAXN8bSEQFHl5FYXH0A7YXVMrfhmKaSuBSy6LidXECn3U9Qv/dHA==
+
+marked-shiki@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmmirror.com/marked-shiki/-/marked-shiki-1.1.0.tgz#c291e956fceabb7dbb44e1d4dd1b66702b873db0"
+  integrity sha512-PNiC0X4rYnzF63T6CDscwTxQB8l5Aur9XR7MRNBi/Y9nSxmPxasWT+V5OVam8Pj+NycWjzG6idO7fbc2bDD16w==
+
 marked@^11.2.0:
   version "11.2.0"
   resolved "https://registry.yarnpkg.com/marked/-/marked-11.2.0.tgz#fc908aeca962b721b0392ee4205e6f90ebffb074"
@@ -7148,6 +7177,14 @@ shell-quote@^1.6.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.8.1.tgz#6dbf4db75515ad5bac63b4f1894c3a154c766680"
   integrity sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==
+
+shiki@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.npmmirror.com/shiki/-/shiki-1.11.0.tgz#fad958667d7dc8e58f58e7c6ebd24d75d7c4e199"
+  integrity sha512-NqH/O1zRHvnuk/WfSL6b7+DtI7/kkMMSQGlZhm9DyzSU+SoIHhaw/fBZMr+zp9R8KjdIzkk3JKSC6hORuGDyng==
+  dependencies:
+    "@shikijs/core" "1.11.0"
+    "@types/hast" "^3.0.4"
 
 side-channel@^1.0.4:
   version "1.0.6"

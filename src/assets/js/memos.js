@@ -1,5 +1,6 @@
-import { marked } from "marked";
-import hljs from "highlight.js";
+import { Marked } from "marked";
+// import { markedHighlight } from "marked-highlight";
+// import hljs from "highlight.js";
 
 export async function getMemos(url, limit, offset) {
     try {
@@ -41,14 +42,10 @@ export function parseMemos(data) {
             /<a.*?href="https:\/\/www\.youtube\.com\/watch\?v\=([a-z|A-Z|0-9]{11})\".*?>.*<\/a>/g;
 
     // Marked Options
-    marked.setOptions({
-        breaks: true,
-        smartypants: false,
-        highlight: (code, lang) => {
-            if (Prism.languages[lang]) {
-                return hljs.highlight(code, Prism.languages[lang], lang);
-            }
-        },
+    const marked = new Marked();
+
+    marked.use({
+        breaks: true
     });
 
     // Memos Content
