@@ -8,6 +8,8 @@ import postcssPresetEnv from "postcss-preset-env";
 import copy from "rollup-plugin-copy";
 import terser from "@rollup/plugin-terser";
 import replace from "@rollup/plugin-replace";
+import { visualizer } from 'rollup-plugin-visualizer';  
+
 
 const sourceMap = process.env.NODE_ENV.trim() === "dev";
 
@@ -42,6 +44,9 @@ export default {
             ],
         }),
         terser(),
+        visualizer({  
+            filename: 'dist/statistics.html'  
+          })  
         // del({ targets: 'dist/*' })
     ],
 };

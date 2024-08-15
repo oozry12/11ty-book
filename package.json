@@ -7,7 +7,7 @@
     "license": "MIT",
     "scripts": {
         "11ty": "set NODE_ENV=dev && npx eleventy --serve --incremental",
-        "rollup": "set NODE_ENV=dev && npx rollup --config --watch",
+        "rollup": "set NODE_ENV=dev && npx rollup --config --watch --logLevel info",
         "start": "npx run-p 11ty rollup",
         "prod": "export NODE_ENV=pro && npx eleventy && npx rollup -c",
         "debug": "set DEBUG=Eleventy* & set NODE_ENV=pro & npx @11ty/eleventy"
@@ -64,6 +64,7 @@
         "rollup-plugin-import-css": "^3.5.0",
         "rollup-plugin-livereload": "^2.0.5",
         "rollup-plugin-postcss": "^4.0.2",
+        "rollup-plugin-visualizer": "^5.12.0",
         "sass": "^1.72.0",
         "shiki": "^1.11.0",
         "supercluster": "^8.0.1",
