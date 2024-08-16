@@ -23,7 +23,16 @@ permalink: /map/index.html
   </h1>
 
   {{ page.html }}
+  <script type="module" src="{{ '/assets/map.js' | absoluteUrl | cacheBust }}"></script>
+
   <div id="map" class="footer-map"></div>
+
+  <script type="module" defer >
+    import initMap from '/assets/map.js';
+    initMap();
+  </script>
+
+
 </article>
 {% include "partials/post-action",post:page %}
 {% endblock %}

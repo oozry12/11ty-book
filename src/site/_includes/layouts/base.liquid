@@ -72,7 +72,7 @@
 
   {% comment %} {{ partial "docs/inject/body" . }} {% endcomment %}
   {% block scripts %}
-  <script type="module" src="{{ '/assets/main.js' | absoluteUrl | cacheBust }}"></script>
+  <script type="module" src="{{ '/assets/main.js' | absoluteUrl | cacheBust }}" defer ></script>
   {% endblock %}
   {{ site.codeinjection_foot  }}
 </body>

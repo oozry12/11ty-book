@@ -5,7 +5,7 @@ import mediumZoom from "medium-zoom";
 import search from "./search";
 import Artalk from "artalk/dist/ArtalkLite.js";
 import { initCopyButton } from "./code.js";
-import initMap from "./map.js";
+// import initMap from "./map.js";
 import tippy from "tippy.js";
 
 import "../js/cards.min.js"
@@ -216,7 +216,7 @@ function initZoom() {
 search();
 initZoom();
 initCopyButton();
-initMap();
+// initMap();
 initWebSocket();
 
 if (navigator.serviceWorker) {

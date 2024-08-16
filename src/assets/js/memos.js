@@ -131,20 +131,20 @@ export function parseMemos(data) {
         //   }
         // }
         //标签
-        let tagArr = memo.content.match(TAG_REG);
-        if (tagArr) {
-            memosTag = tagArr
-                .map((t) => {
-                    return `<a href="javascript:void">#${String(t
-                    ).replace(/[#]/, "")}</a>`;
-                })
-                .join("");
-        } else {
-            memosTag = ``;
-        }
+        // let tagArr = memo.content.match(TAG_REG);
+        // if (tagArr) {
+        //     memosTag = tagArr
+        //         .map((t) => {
+        //             return `<a href="javascript:void">#${String(t
+        //             ).replace(/[#]/, "")}</a>`;
+        //         })
+        //         .join("");
+        // } else {
+        //     memosTag = ``;
+        // }
 
         memo.content = memosRes;
-        memo.tagArr = memosTag;
+        // memo.tagArr = memosTag;
         data[i] = memo;
     }
 
