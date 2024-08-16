@@ -6,7 +6,7 @@
         {% for item in collections.tags %}
             {% if item.count.posts >= 3 and item.visibility == "public" %}
                 <li class="flex justify-between">
-                    <a href="{{ item.slug | articleCategoryUrl }}">{{ item.name }}</a>
+                    <a href="{{ item.slug | articleCategoryUrl }}">#{{ item.name }}</a>
                     <span>{{ item.count.posts }}</span>
                   </li>
             {% endif %}
