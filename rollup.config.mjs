@@ -1,5 +1,5 @@
 import commonjs from "@rollup/plugin-commonjs";
-import css from 'rollup-plugin-import-css';
+import css from "rollup-plugin-import-css";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import postcss from "rollup-plugin-postcss";
 import babel from "@rollup/plugin-babel";
@@ -8,13 +8,12 @@ import postcssPresetEnv from "postcss-preset-env";
 import copy from "rollup-plugin-copy";
 import terser from "@rollup/plugin-terser";
 import replace from "@rollup/plugin-replace";
-import { visualizer } from 'rollup-plugin-visualizer';  
-
+import { visualizer } from "rollup-plugin-visualizer";
 
 const sourceMap = process.env.NODE_ENV.trim() === "dev";
 
 export default {
-    input: "src/assets/js/main.js",
+    input: { main: "src/assets/js/main.js", map: "src/assets/js/map.js" },
     output: { dir: "dist/assets/", sourcemap: sourceMap, format: "es" },
     plugins: [
         replace({
@@ -28,10 +27,7 @@ export default {
             extract: true,
             sourceMap: sourceMap,
             extensions: ["css", "scss"],
-            plugins: [
-                atImport(),
-                postcssPresetEnv(),
-            ],
+            plugins: [atImport(), postcssPresetEnv()],
             minimize: true,
         }),
         css(),
@@ -44,9 +40,9 @@ export default {
             ],
         }),
         terser(),
-        visualizer({  
-            filename: 'dist/statistics.html'  
-          })  
+        visualizer({
+            filename: "dist/statistics.html",
+        }),
         // del({ targets: 'dist/*' })
     ],
 };
