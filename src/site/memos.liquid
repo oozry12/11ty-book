@@ -52,9 +52,11 @@ permalink: /memos/index.html
                             <div class="resource-wrapper">
                                 <div class="images-wrapper my-2" view-image="">
                                     <template x-for="img in item.resourceList">
-                                        <div class="memo-resource w-100"><img class="lazyload  medium-zoom-image"
-                                                :src="img.externalLink" :data-zoom="img.externalLink"
-                                                data-loaded="true"></div>
+                                        <div class="memo-resource w-100">
+                                                <img class="lazyload  medium-zoom-image"
+                                                :src="img.externalLink" 
+                                                data-loaded="true">
+                                        </div>
                                     </template>
                                 </div>
                             </div>
@@ -74,7 +76,7 @@ permalink: /memos/index.html
         </template>
         <div class="btn-more flex flex-wrap justify-center">
             <a href="javascript:void" class="book-btn"
-                @click="loadmore();$nextTick(initZoom())">
+                @click="loadmore();">
                 加载更多
             </a>
         </div>
