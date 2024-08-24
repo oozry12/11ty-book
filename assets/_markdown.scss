@@ -1,7 +1,7 @@
 @import "variables";
 
 .markdown {
-  line-height: 1.6;
+  line-height: 2;
 
   // remove padding at the beginning of page
   > :first-child {
@@ -36,6 +36,29 @@
   h5,
   h6 {
     font-weight: bolder;
+  }
+
+  h2{
+    font-size: 1.7rem;
+
+    &:before {
+      content: "h2";
+    }
+  }
+
+  h3{
+    font-size: 1.4rem;
+
+    &:before {
+      content: "h3";
+    }
+  }
+
+  h4{
+    font-size: 1.3rem;
+    &:before {
+      content: "h4";
+    }
   }
 
   h5 {

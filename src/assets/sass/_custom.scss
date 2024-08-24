@@ -126,6 +126,11 @@
 .book-title {
     view-transition-name: book-title;
 
+    &:before{
+        display: none !important;
+    }
+
+
     a {
         text-decoration: auto;
 

@@ -1,4 +1,4 @@
-import mapboxgl from "mapbox-gl";
+import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import MapboxLanguage from "@mapbox/mapbox-gl-language";
 import Supercluster from "supercluster";
 import geojsonExtent from "@mapbox/geojson-extent/geojson-extent";
@@ -64,13 +64,14 @@ class CustomMap {
         const map = new mapboxgl.Map({
             container: "map",
             projection: "mercator",
-            style: "mapbox://styles/mapbox/light-v11",
+            style: "mapbox://styles/mapbox/light-v10",
             center: [108.14, 33.87],
             zoom: 3,
             minZoom: 3,
             maxZoom: 24,
             pitch: 0,
         });
+
 
         const controlButton = new ControlButton({
             className: "mapbox-gl-draw_polygon",
