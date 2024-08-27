@@ -2,6 +2,19 @@
 
 // @import "plugins/numbered";
 
+.book-page{
+    .book-title{
+        .book-emoji{
+            height: auto;
+        }
+    }
+
+    .book-emoji{
+        vertical-align: sub;
+        height: 22px;
+    }
+}
+
 .kg-callout-card {
     display: flex;
 

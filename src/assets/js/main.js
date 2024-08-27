@@ -206,6 +206,41 @@ gallery.forEach(function (e) {
     l.style.flex = a + " 1 0%";
 });
 
+function replceEmoji(){
+    const emojiRegex = /([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2694-\u2697]|\uD83E[\uDD10-\uDD5D])/g;
+
+
+    let emojis = [];
+    
+    // 使用fetch发送GET请求
+    fetch('/assets/emoji.json')
+      .then(response => {
+        // 首先检查响应状态
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        // 解析JSON数据
+        return response.json();
+      })
+      .then(data => {
+        // JSON数据现在存储在变量`data`中
+        emojis = data;
+        let finds = document.querySelectorAll('.book-page')[0].innerHTML.match(emojiRegex);
+        finds.forEach(function(i){
+            let temp = emojis.items.find(item => item.icon === i)
+            if(temp){
+                document.querySelectorAll('.book-page')[0].innerHTML = document.querySelectorAll('.book-page')[0].innerHTML.replaceAll(i,"<img class='book-emoji' src='"+ temp.val +"'/>")
+            }
+        })
+    
+        // 你可以在这里使用你的数据
+      })
+      .catch(error => {
+        // 处理任何在请求过程中发生的错误
+        console.error('There was a problem with the fetch operation:', error);
+      });
+}
+
 function initZoom() {
     mediumZoom(".markdown img", {
         background: "rgba(0,0,0,0.75)",
@@ -218,6 +253,7 @@ initZoom();
 initCopyButton();
 // initMap();
 initWebSocket();
+replceEmoji();
 
 // if (navigator.serviceWorker) {
 //     navigator.serviceWorker.register(location.origin + "/sw.js", {
