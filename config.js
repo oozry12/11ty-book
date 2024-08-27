@@ -50,7 +50,7 @@ module.exports = {
     ],
     footer: [
         {
-            name: "2",
+            name: "rss",
             html: "<a href='https://github.com/rebron1900' target='_blank'>Github</a> | <a href='https://1900.live/rss'  target='_blank'>Rss</a>",
         },
         {
@@ -59,11 +59,15 @@ module.exports = {
         },
         {
             name: "copyright",
-            html: "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans' target='_blank'>CC BY-NC-ND 4.0</a> <br /> <a href='https://beian.miit.gov.cn/' target='_blank'>蜀ICP备16022135号-2</a>",
+            html: "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans' target='_blank'>CC BY-NC-ND 4.0</a>",
         },
         {
-            name: "1",
+            name: "power",
             html: "Power by <a href='https://www.11ty.dev/' target='_blank'>11ty</a> & <a href='https://www.ghost.org/' target='_blank'>ghost</a>",
+        },
+        {
+            name: "icp",
+            html: "<a href='https://beian.miit.gov.cn/' target='_blank'>蜀ICP备16022135号-2</a>",
         },
     ],
     themes: [
