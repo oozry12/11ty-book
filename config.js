@@ -59,7 +59,7 @@ module.exports = {
         },
         {
             name: "copyright",
-            html: "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans' target='_blank'>CC BY-NC-ND 4.0</a>",
+            html: "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans' target='_blank'>CC BY-NC-ND 4.0</a> <br /> <a href='https://beian.miit.gov.cn/' target='_blank'>蜀ICP备16022135号-2</a>",
         },
         {
             name: "1",
