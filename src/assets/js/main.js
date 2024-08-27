@@ -206,9 +206,8 @@ gallery.forEach(function (e) {
     l.style.flex = a + " 1 0%";
 });
 
-function replceEmoji(){
+function replceEmoji(list){
     const emojiRegex = /([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2694-\u2697]|\uD83E[\uDD10-\uDD5D])/g;
-
 
     let emojis = [];
     
@@ -225,13 +224,22 @@ function replceEmoji(){
       .then(data => {
         // JSON数据现在存储在变量`data`中
         emojis = data;
-        let finds = document.querySelectorAll('.book-page')[0].innerHTML.match(emojiRegex);
-        finds.forEach(function(i){
-            let temp = emojis.items.find(item => item.icon === i)
-            if(temp){
-                document.querySelectorAll('.book-page')[0].innerHTML = document.querySelectorAll('.book-page')[0].innerHTML.replaceAll(i,"<img class='book-emoji' src='"+ temp.val +"'/>")
-            }
+
+
+        list.forEach(function(el){
+            let finds = el.innerHTML.match(emojiRegex);
+
+            if(!finds){return}
+            finds.forEach(function(i){
+                let temp = emojis.items.find(item => item.icon === i)
+                if(temp){
+                    el.innerHTML = el.innerHTML.replaceAll(i,"<img class='book-emoji' src='"+ temp.val +"'/>")
+                }
+            })
+            
         })
+
+
     
         // 你可以在这里使用你的数据
       })
@@ -253,7 +261,7 @@ initZoom();
 initCopyButton();
 // initMap();
 initWebSocket();
-replceEmoji();
+replceEmoji(document.querySelectorAll('.markdown'));
 
 // if (navigator.serviceWorker) {
 //     navigator.serviceWorker.register(location.origin + "/sw.js", {
@@ -306,6 +314,7 @@ if (
         });
 
         changeTheme(localStorage.theme, localStorage.name);
+        replceEmoji(document.querySelectorAll('.atk-body'));
     });
     artalk.on("comment-inserted",function(){
         cocoMessage.success('感谢你发表的想法 💖')
