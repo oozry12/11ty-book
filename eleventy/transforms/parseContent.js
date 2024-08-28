@@ -8,6 +8,7 @@ const pangu = require("pangu/src/browser/pangu");
 const hljs = require("highlight.js");
 const golink = require("./../shortcodes/golink")
 const aniEmoji = require("../shortcodes/aniEmoji")
+const emojis = require("../../assets/emoji.json")
 
 
 module.exports = (content, outputPath) => {
@@ -85,6 +86,21 @@ module.exports = (content, outputPath) => {
 
     // add pangu space and hilghight code block
     pangu.spacingPageBody();
+    
+    const emojiRegex = /([\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2694-\u2697]|\uD83E[\uDD10-\uDD5D])/g;
+
+    document.querySelectorAll(".markdown").forEach(function(el){
+      let finds = el.innerHTML.match(emojiRegex);
+
+      if(!finds){return}
+      finds.forEach(function(i){
+          let temp = emojis.items.find(item => item.icon === i)
+          if(temp){
+              el.innerHTML = el.innerHTML.replaceAll(i,"<img class='book-emoji' src='"+ temp.val +"'/>")
+          }
+      })
+      
+  })
 
     const codes = [
       ...document.querySelectorAll(".markdown pre code"),

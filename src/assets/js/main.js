@@ -239,8 +239,7 @@ function replceEmoji(list){
             
         })
 
-
-    
+  
         // 你可以在这里使用你的数据
       })
       .catch(error => {
@@ -256,12 +255,11 @@ function initZoom() {
     return;
 }
 
-search();
-initZoom();
+search();   
 initCopyButton();
 // initMap();
 initWebSocket();
-replceEmoji(document.querySelectorAll('.markdown'));
+initZoom();
 
 // if (navigator.serviceWorker) {
 //     navigator.serviceWorker.register(location.origin + "/sw.js", {
@@ -312,9 +310,8 @@ if (
                 }
             }
         });
-
+        replceEmoji(document.querySelectorAll(".atk-content"));
         changeTheme(localStorage.theme, localStorage.name);
-        replceEmoji(document.querySelectorAll('.atk-body'));
     });
     artalk.on("comment-inserted",function(){
         cocoMessage.success('感谢你发表的想法 💖')
