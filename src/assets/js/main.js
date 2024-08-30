@@ -3,7 +3,7 @@ import "../sass/book.scss";
 import Alpine from "alpinejs";
 import mediumZoom from "medium-zoom";
 import search from "./search";
-import Artalk from "artalk";
+import Artalk from "artalk/dist/ArtalkLite.js";
 import { initCopyButton } from "./code.js";
 // import initMap from "./map.js";
 import tippy from "tippy.js";
