@@ -33,7 +33,7 @@
         "@rollup/plugin-replace": "^5.0.5",
         "@rollup/plugin-terser": "^0.4.4",
         "@speed-highlight/core": "^1.2.6",
-        "artalk": "^2.8.3",
+        "artalk": "^2.8.7",
         "cal-heatmap": "^4.2.4",
         "cheerio": "^1.0.0-rc.12",
         "coco-message": "^2.0.3",
