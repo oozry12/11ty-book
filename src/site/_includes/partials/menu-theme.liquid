@@ -14,7 +14,7 @@
     <ul>
       {% for theme in themes %}
         <li>
-          <a href="#" @click="changeTheme('{{ theme.name }}','{{ theme.desc }}');setName();">
+          <a href="#" @click="changeTheme('{{ theme.name }}','{{ theme.desc }}','{{ theme.type }}');setName();">
             {{ theme.desc }}
           </a>
         </li> 

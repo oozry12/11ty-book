@@ -311,7 +311,7 @@ if (
             }
         });
         replceEmoji(document.querySelectorAll(".atk-content"));
-        changeTheme(localStorage.theme, localStorage.name);
+        changeTheme(localStorage.theme, localStorage.name, localStorage.themetype);
     });
     artalk.on("comment-inserted",function(){
         cocoMessage.success('感谢你发表的想法 💖')
@@ -322,12 +322,14 @@ if (
     })
 }
 
-function changeTheme(theme, name) {
+function changeTheme(theme, name, type) {
     if (theme == "auto") {
         document.documentElement.setAttribute("class", "");
         const prefersDarkScheme = window.matchMedia(
             "(prefers-color-scheme: dark)"
         ).matches;
+        type = prefersDarkScheme ? "dark" : "light";
+
         // if (window.artalk) window.artalk.setDarkMode(prefersDarkScheme);
     } else {
         // 切换主题并存储到localStorage
@@ -335,9 +337,16 @@ function changeTheme(theme, name) {
         // if (window.artalk)
         //     window.artalk.setDarkMode(theme === "dark" ? true : false);
     }
+
     localStorage.theme = theme;
     localStorage.name = name;
+    localStorage.themetype = type
     document.getElementById('theme').checked = false
+
+    if (window.mapboxi) {
+        window.mapboxi.map.setStyle(`mapbox://styles/mapbox/${type}-v10`);
+      }
+
 }
 
 // // 隐藏所有非当前类型的元素

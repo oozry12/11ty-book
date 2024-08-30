@@ -74,30 +74,37 @@ module.exports = {
         {
             name: "light",
             desc: "月牙白",
+            type: "light"
         },
         {
             name: "dark",
             desc: "极夜黑",
+            type: "dark"
         },
         {
             name: "yayu",
             desc: "雅余黄",
+            type: "dark"
         },
         {
             name: "yuhang",
             desc: "昱行粉",
+            type: "dark"
         },
         {
             name: "herblue",
             desc: "她的蓝",
+            type: "dark"
         },
         {
             name: "onojyun",
             desc: "莫比乌斯",
+            type: "light"
         },
         {
             name: "auto",
             desc: "自适应",
+            type: "auto"
         },
     ],
 };

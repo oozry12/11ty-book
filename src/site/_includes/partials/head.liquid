@@ -1,32 +1,33 @@
 {% assign og_title = "" %}
 {% if post.title %}
-  {% assign og_title = post.title  |  append:" - " |  append: site.title |  append: " | " |  append: site.description  %}
+{% assign og_title = post.title | append:" - " | append: site.title | append: " | " | append: site.description %}
 {% else %}
-  {% assign og_title = site.title |  append: " | " |  append: site.description %}
+{% assign og_title = site.title | append: " | " | append: site.description %}
 {% endif %}
 
 {% assign og_Text = "" %}
 {% if post.title %}
-  {% assign og_Text = post.title  |  append:" - " |  append: site.title |  append: " | " |  append: site.description | url_encode %}
+{% assign og_Text = post.title | append:" - " | append: site.title | append: " | " | append: site.description |
+url_encode %}
 {% else %}
-  {% assign og_Text = site.title |  append: " | " |  append: site.description | url_encode  %}
+{% assign og_Text = site.title | append: " | " | append: site.description | url_encode %}
 {% endif %}
 
 
 {% assign og_img = "" %}
 {% if post.feature_image %}
-  {% assign og_img = post.feature_image %}
+{% assign og_img = post.feature_image %}
 {% else %}
-  {% assign og_img = site.cover_image %}
+{% assign og_img = site.cover_image %}
 {% endif %}
 
 
 
 {% assign og_desc = "" %}
 {% if post.excerpt %}
-  {% assign og_desc = post.excerpt | strip_newlines | strip_html | escape | replace: '"', ''%}
+{% assign og_desc = post.excerpt | strip_newlines | strip_html | escape | replace: '"', ''%}
 {% else %}
-  {% assign og_desc = site.description | strip_newlines | strip_html | escape %}
+{% assign og_desc = site.description | strip_newlines | strip_html | escape %}
 {% endif %}
 
 <title>{{og_title}}</title>
@@ -50,7 +51,9 @@
   For more information, read: https://www.opengraph.xyz/blog/how-to-implement-dynamic-open-graph-images
 -->
 
-<meta property="og:image" content="https://og.190102.xyz/api/og?title={{ og_Text }}&desc={{ post.excerpt | url_encode }}&date={{ post.published_at | date: "%Y-%m-%d" |  url_encode  }}">
+<meta property="og:image"
+  content="https://og.190102.xyz/api/og?title={{ og_Text }}&desc={{ post.excerpt | url_encode }}&date={{ post.published_at | date: "
+  %Y-%m-%d" | url_encode }}">
 
 <!-- Twitter Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
@@ -63,18 +66,20 @@
   Replace the variables in the brackets with your own values and use this URL in the image tag below this comment. Ensure values are URL encoded.
   For more information, read: https://www.opengraph.xyz/blog/how-to-implement-dynamic-open-graph-images
 -->
-<meta name="twitter:image" content="https://og.190102.xyz/api/og?title={{ og_Text }}&desc={{ post.excerpt | url_encode }}&date={{ post.published_at | date: "%Y-%m-%d" |  url_encode  }}">
+<meta name="twitter:image"
+  content="https://og.190102.xyz/api/og?title={{ og_Text }}&desc={{ post.excerpt | url_encode }}&date={{ post.published_at | date: "
+  %Y-%m-%d" | url_encode }}">
 
 <!-- Meta Tags Generated via https://www.opengraph.xyz -->
 
-{% comment %} 
+{% comment %}
 {{- with .Page.Params.BookHref -}}
-  <meta http-equiv="Refresh" content="0; url='{{ . }}'" />
-{{- end -}} 
+<meta http-equiv="Refresh" content="0; url='{{ . }}'" />
+{{- end -}}
 {% endcomment %}
 
-{% comment %} 
-  {{- template "_internal/opengraph.html" . -}} 
+{% comment %}
+{{- template "_internal/opengraph.html" . -}}
 {% endcomment %}
 
 <link rel="sitemap" type="application/xml" title="{{site.title}}的站点地图" href="{{ '/sitemap.xml' | absoluteUrl }}">
@@ -82,65 +87,76 @@
 
 <link rel="manifest" href="{{ '/manifest.json' | absoluteUrl  | cacheBust }}">
 
-<link rel="icon" href="{{ '/assets/img/favicon.png' | absoluteUrl  | cacheBust }}" >
+<link rel="icon" href="{{ '/assets/img/favicon.png' | absoluteUrl  | cacheBust }}">
 <link rel="canonical" href="{{ page.url  | absoluteUrl }}">
 
-{{ site.codeinjection_head  }}
+{{ site.codeinjection_head }}
 
 <link rel="stylesheet" href="{{ '/assets/main.css' | absoluteUrl | cacheBust }}">
 
 <script>
-    const theme = localStorage.theme;
-    if (localStorage.theme != 'auto') {
-        document.documentElement.classList.add(theme);
-        localStorage.theme = theme;
-    }
-      localStorage.name = localStorage.name || '自适应';
-      localStorage.theme = theme || 'auto';
+  const theme = localStorage.theme;
+  if (localStorage.theme != 'auto') {
+    document.documentElement.classList.add(theme);
+    localStorage.theme = theme;
+    localStorage.themetype = localStorage.themetype || 'light';
+  }else{
+    const prefersDarkScheme = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+        localStorage.themetype = prefersDarkScheme ? "dark" : "light";
+  }
+  
+  localStorage.name = localStorage.name || '自适应';
+  localStorage.theme = theme || 'auto';
 
 </script>
-  
 
-{% comment %} 
+
+{% comment %}
 <script defer src="{{ '/sw.js' | absoluteUrl | cacheBust }}"></script>
 
 <script>
   if (navigator.serviceWorker) {
     navigator.serviceWorker.register(
-      "{{ '/sw.js' | absoluteUrl | cacheBust }}", 
+      "{{ '/sw.js' | absoluteUrl | cacheBust }}",
       { scope: "{{ "" | absoluteUrl }}" }
     );
   }
 </script> {% endcomment %}
 
 
-{% comment %} 
+{% comment %}
 
 
 {{- range .Translations }}
-  <link rel="alternate" hreflang="{{ default .Language.Lang .Site.LanguageCode }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">
+<link rel="alternate" hreflang="{{ default .Language.Lang .Site.LanguageCode }}" href="{{ .Permalink }}"
+  title="{{ partial " docs/title" . }}">
 {{- end -}}
 
 {% endcomment %}
 
-{% comment %} 
+{% comment %}
 {{- if default true .Site.Params.BookSearch -}}
-  {{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
-  {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
-  <script defer src="{{ "flexsearch.min.js" | relURL }}"></script>
-  <script defer src="{{ $searchJS.RelPermalink }}" {{ template "integrity" $searchJS }}></script>
+{{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
+{{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify |
+resources.Fingerprint }}
+<script defer src="{{ " flexsearch.min.js" | relURL }}"></script>
+<script defer src="{{ $searchJS.RelPermalink }}" {{ template "integrity" $searchJS }}></script>
 {{ end -}}
 
 {{- if .Site.Params.BookServiceWorker -}}
-  {{- $swJS := resources.Get "sw-register.js" | resources.ExecuteAsTemplate "sw.js" . | resources.Minify | resources.Fingerprint }}
-  <script defer src="{{ $swJS.RelPermalink }}" {{ template "integrity" $swJS }}></script>
+{{- $swJS := resources.Get "sw-register.js" | resources.ExecuteAsTemplate "sw.js" . | resources.Minify |
+resources.Fingerprint }}
+<script defer src="{{ $swJS.RelPermalink }}" {{ template "integrity" $swJS }}></script>
 {{ end -}}
 
 {{- template "_internal/google_analytics.html" . -}}
 
 <!-- RSS -->
 {{- with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ printf `
+<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 {{ end -}}
 
 {{ "<!--" | safeHTML }}
@@ -149,7 +165,7 @@ https://github.com/alex-shpak/hugo-book
 {{ "-->" | safeHTML }}
 
 {{- define "integrity" -}}
-  {{- if (urls.Parse .Permalink).Host -}}
-    integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
-  {{- end -}}
+{{- if (urls.Parse .Permalink).Host -}}
+integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
+{{- end -}}
 {{- end -}} {% endcomment %}
