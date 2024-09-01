@@ -140,17 +140,32 @@ class MapHandler {
         const markerElement = this.createMarker();
         markerElement.className = "marker";
 
+        let results;
+
         if(feature.properties.description){
-            //console.log(feature.properties.description)
+            const str = feature.properties.description;
+            // 使用正则表达式匹配所有的标题、链接和图片URL
+            const regex = /\[(.*?)\]\((.*?)\)\((.*?)\)/g;
+            const matches = [...str.matchAll(regex)];
+            
+            // 将匹配结果转换为对象数组
+            results = matches.map(match => ({
+              title: match[1],
+              url: match[2],
+              img: match[3]
+            }));
+            
+            results = results.length == 0 ? null:results;
         }
 
-        markerElement.style.setProperty("--photo", 'url("' + feature.properties.image + '"');
-
         let popupContent = `<strong>${feature.properties.name}</strong><br />`;
-        if (feature.properties.permalink) {
-            feature.properties.permalink.forEach((link, index) => {
-                popupContent += `<a style='color:var(--hint-color-info)' target="_blank" href="${link}">${feature.properties.description[index]}</a>`;
-            });
+        if (results) {
+            markerElement.classList.add("img-post");
+            markerElement.style.setProperty("--photo", 'url("' + results[0].img + '"');
+            
+            results.forEach((item, index) => {
+                popupContent += `- <a style='color:var(--hint-color-info)' target="_blank" href="${item.url}">${item.title}</a> <br />`;
+            })
         } else {
             markerElement.classList.add("no-post");
             popupContent += "该地点暂无游记。";
@@ -224,7 +239,7 @@ class MapHandler {
 export default function initMap() {
     if (null != document.querySelector("#map")) {
         fetch(
-            "https://ghproxy.net/https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/geojson.json?short_path=832ba66"
+            "https://raw.githubusercontent.com/rebron1900/doumark-action/master/data/geojson.json?short_path=832ba66"
         ).then(function (t) {
             return t.json().then(function (t) {
                 window.mapboxi = new MapHandler({ data: t });
