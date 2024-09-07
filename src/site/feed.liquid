@@ -7,6 +7,10 @@ permalink: rss.xml
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ site.title }}</title>
   <subtitle>{{ site.description }}</subtitle>
+  <follow_challenge>
+    <feedId>41342818716915717</feedId>
+    <userId>41422934521641984</userId>
+  </follow_challenge>
   <link href="{{ '' | absoluteUrl }}" rel="self" />
   {% if collections.posts %}
     <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
