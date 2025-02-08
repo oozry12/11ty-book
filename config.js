@@ -14,8 +14,8 @@ module.exports = {
     },
     customPage: ["archives", "memos", "links","douban","albums","map"],
     ghost: {
-        url: "https://cms.1900.live",
-        key: "54bae25f075f027aba23d6f657",
+        url: "https://ghost.ooim.xyz",
+        key: "845f0e3481f838ec62e171f140",
         version: "v5.0",
     },
     memos: {
